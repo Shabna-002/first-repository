@@ -131,7 +131,7 @@ function renderCartPage() {
         subtotal += itemTotal;
         itemsHtml += `
             <div class="cart-item-card">
-                <img src="${item.image}" alt="${item.name}" class="cart-item-img" onerror="this.src='https://via.placeholder.com/90?text=Product'">
+                <img src="${item.image}" alt="${item.name}" class="cart-item-img" onerror="this.src='images/empty_bag.svg'">
                 <div class="cart-item-info">
                     <div class="cart-item-title">${item.name}</div>
                     <div class="text-muted small mb-1">${item.category}</div>
