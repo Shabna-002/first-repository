@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kids' Collection | StyleHub</title>
+
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Bootstrap 4 CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="ecommerce.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <i class="fas fa-shopping-bag"></i> Style<span>Hub</span>
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item dropdown active">
+              <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Category
+              </a>
+              <div class="dropdown-menu" aria-labelledby="categoryDropdown">
+                <a class="dropdown-item" href="men.html"><i class="fas fa-male mr-2"></i> Men's Collection</a>
+                <a class="dropdown-item" href="women.html"><i class="fas fa-female mr-2"></i> Women's Collection</a>
+                <a class="dropdown-item active text-primary" href="kids.html"><i class="fas fa-child mr-2"></i> Kids' Collection</a>
+              </div>
+            </li>
+          </ul>
+
+          <ul class="navbar-nav ml-auto align-items-center" id="nav-auth-links">
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-toggle="modal" data-target="#signInModal">
+                <i class="fas fa-sign-in-alt mr-1"></i> Sign In
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-toggle="modal" data-target="#signUpModal">
+                <i class="fas fa-user-plus mr-1"></i> Sign Up
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link btn btn-outline-info text-white ml-lg-2 px-3 py-1" href="cart.html">
+                <i class="fas fa-shopping-cart mr-1"></i> Cart
+                <span class="cart-badge cart-badge-count">0</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container mt-4">
+    <!-- Category Hero Banner -->
+    <div class="category-banner">
+      <img src="https://assets.tatacliq.com/medias/sys_master/images/33432657461278.jpg" class="img-fluid w-100" alt="Kids' Collection">
+    </div>
+
+    <!-- Section Heading -->
+    <h2 class="section-title">Kids' Collection</h2>
+
+    <!-- Product Grid -->
+    <div class="row">
+      <!-- Product 1 -->
+      <div class="col-xl-4 col-md-6 col-12 mb-4">
+        <div class="product-card" data-id="k1" data-name="Boys Vibrant Cotton Graphic T-Shirt" data-price="499" data-category="Boys' Wear" data-image="https://assets.tatacliq.com/medias/sys_master/images/33432658640926.jpg">
+          <div class="product-img-wrap">
+            <span class="discount-badge">44% OFF</span>
+            <img src="https://assets.tatacliq.com/medias/sys_master/images/33432658640926.jpg" alt="Graphic T-Shirt">
+          </div>
+          <div class="card-body">
+            <div class="product-category">T-Shirts</div>
+            <h5 class="product-title">Boys Vibrant Cotton Graphic T-Shirt</h5>
+            <div class="product-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+              <span class="rating-count">(4.5)</span>
+            </div>
+            <div class="price-wrap">
+              <span class="price-current">₹499</span>
+              <span class="price-original">₹899</span>
+            </div>
+            <button class="btn-add-cart">
+              <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="col-xl-4 col-md-6 col-12 mb-4">
+        <div class="product-card" data-id="k2" data-name="Girls Floral Party Wear Frock" data-price="699" data-category="Girls' Wear" data-image="https://assets.tatacliq.com/medias/sys_master/images/33432658706462.jpg">
+          <div class="product-img-wrap">
+            <span class="discount-badge">46% OFF</span>
+            <img src="https://assets.tatacliq.com/medias/sys_master/images/33432658706462.jpg" alt="Party Frock">
+          </div>
+          <div class="card-body">
+            <div class="product-category">Frocks & Dresses</div>
+            <h5 class="product-title">Girls Floral Party Wear Frock</h5>
+            <div class="product-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <span class="rating-count">(4.8)</span>
+            </div>
+            <div class="price-wrap">
+              <span class="price-current">₹699</span>
+              <span class="price-original">₹1,299</span>
+            </div>
+            <button class="btn-add-cart">
+              <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="col-xl-4 col-md-6 col-12 mb-4">
+        <div class="product-card" data-id="k3" data-name="Kids Casual Dungarees & Jumpsuit Set" data-price="899" data-category="Kids' Wear" data-image="https://assets.tatacliq.com/medias/sys_master/images/33432660967454.jpg">
+          <div class="product-img-wrap">
+            <span class="discount-badge">43% OFF</span>
+            <img src="https://assets.tatacliq.com/medias/sys_master/images/33432660967454.jpg" alt="Jumpsuit Set">
+          </div>
+          <div class="card-body">
+            <div class="product-category">Sets & Jumpsuits</div>
+            <h5 class="product-title">Kids Casual Dungarees & Jumpsuit Set</h5>
+            <div class="product-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+              <span class="rating-count">(4.6)</span>
+            </div>
+            <div class="price-wrap">
+              <span class="price-current">₹899</span>
+              <span class="price-original">₹1,599</span>
+            </div>
+            <button class="btn-add-cart">
+              <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="col-xl-4 col-md-6 col-12 mb-4">
+        <div class="product-card" data-id="k4" data-name="Soft Cotton Nightwear Pajama Set" data-price="599" data-category="Sleepwear" data-image="https://assets.tatacliq.com/medias/sys_master/images/33432660901918.jpg">
+          <div class="product-img-wrap">
+            <span class="discount-badge">40% OFF</span>
+            <img src="https://assets.tatacliq.com/medias/sys_master/images/33432660901918.jpg" alt="Sleepwear Set">
+          </div>
+          <div class="card-body">
+            <div class="product-category">Sleepwear</div>
+            <h5 class="product-title">Soft Cotton Nightwear Pajama Set</h5>
+            <div class="product-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+              <span class="rating-count">(4.2)</span>
+            </div>
+            <div class="price-wrap">
+              <span class="price-current">₹599</span>
+              <span class="price-original">₹999</span>
+            </div>
+            <button class="btn-add-cart">
+              <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="col-xl-4 col-md-6 col-12 mb-4">
+        <div class="product-card" data-id="k5" data-name="Kids Stretchable Denim Jogger Jeans" data-price="549" data-category="Bottomwear" data-image="https://assets.tatacliq.com/medias/sys_master/images/33432660312094.jpg">
+          <div class="product-img-wrap">
+            <span class="discount-badge">45% OFF</span>
+            <img src="https://assets.tatacliq.com/medias/sys_master/images/33432660312094.jpg" alt="Jogger Jeans">
+          </div>
+          <div class="card-body">
+            <div class="product-category">Bottomwear</div>
+            <h5 class="product-title">Kids Stretchable Denim Jogger Jeans</h5>
+            <div class="product-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <span class="rating-count">(4.7)</span>
+            </div>
+            <div class="price-wrap">
+              <span class="price-current">₹549</span>
+              <span class="price-original">₹999</span>
+            </div>
+            <button class="btn-add-cart">
+              <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 6 -->
+      <div class="col-xl-4 col-md-6 col-12 mb-4">
+        <div class="product-card" data-id="k6" data-name="Girls Printed Summer Top & Shorts" data-price="449" data-category="Tops & Tees" data-image="https://assets.tatacliq.com/medias/sys_master/images/33432660246558.jpg">
+          <div class="product-img-wrap">
+            <span class="discount-badge">43% OFF</span>
+            <img src="https://assets.tatacliq.com/medias/sys_master/images/33432660246558.jpg" alt="Summer Tops">
+          </div>
+          <div class="card-body">
+            <div class="product-category">Tops & Tees</div>
+            <h5 class="product-title">Girls Printed Summer Top & Shorts</h5>
+            <div class="product-rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+              <span class="rating-count">(4.4)</span>
+            </div>
+            <div class="price-wrap">
+              <span class="price-current">₹449</span>
+              <span class="price-original">₹799</span>
+            </div>
+            <button class="btn-add-cart">
+              <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Sign In Modal -->
+  <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="signInModalLabel"><i class="fas fa-user-lock mr-2"></i>Sign In to StyleHub</h5>
+          <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form onsubmit="handleSignIn(event)">
+            <div class="form-group">
+              <label for="signInEmail" class="font-weight-500">Email Address</label>
+              <input type="email" class="form-control" id="signInEmail" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+              <label for="signInPassword" class="font-weight-500">Password</label>
+              <input type="password" class="form-control" id="signInPassword" placeholder="Enter password" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block font-weight-bold py-2 mt-4">
+              Sign In
+            </button>
+          </form>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <p class="mb-0 text-muted small">Don't have an account? <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#signUpModal">Sign Up</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sign Up Modal -->
+  <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="signUpModalLabel"><i class="fas fa-user-plus mr-2"></i>Create StyleHub Account</h5>
+          <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form onsubmit="handleSignUp(event)">
+            <div class="form-group">
+              <label for="signUpName" class="font-weight-500">Full Name</label>
+              <input type="text" class="form-control" id="signUpName" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group">
+              <label for="signUpEmail" class="font-weight-500">Email Address</label>
+              <input type="email" class="form-control" id="signUpEmail" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+              <label for="signUpPassword" class="font-weight-500">Password</label>
+              <input type="password" class="form-control" id="signUpPassword" placeholder="Create password" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block font-weight-bold py-2 mt-4">
+              Create Account
+            </button>
+          </form>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <p class="mb-0 text-muted small">Already have an account? <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#signInModal">Sign In</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-6 footer-col">
+          <h4>ONLINE SHOPPING</h4>
+          <ul>
+            <li><a href="men.html">Men's Collection</a></li>
+            <li><a href="women.html">Women's Collection</a></li>
+            <li><a href="kids.html">Kids' Collection</a></li>
+            <li><a href="cart.html">My Cart</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6 footer-col">
+          <h4>CUSTOMER POLICIES</h4>
+          <ul>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6 footer-col">
+          <h4>MY ACCOUNT</h4>
+          <ul>
+            <li><a href="#" data-toggle="modal" data-target="#signInModal">Sign In</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#signUpModal">Register</a></li>
+            <li><a href="cart.html">View Bag</a></li>
+            <li><a href="#">Track Order</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6 footer-col">
+          <h4>GET HELP</h4>
+          <ul>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Return Policy</a></li>
+            <li><a href="#">Payment Options</a></li>
+            <li><a href="#">Order Cancellation</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="mb-0">&copy; 2026 StyleHub E-Commerce. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="ecommerce.js"></script>
+</body>
+</html>
