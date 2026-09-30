@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Order Tracking | StyleHub</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="ecommerce.css">
+</head>
+<body class="bg-light">
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light px-0">
+        <a class="navbar-brand" href="index.html">
+          <div class="brand-icon-box"><i class="fas fa-bag-shopping"></i></div>
+          Style<span>Hub</span>
+        </a>
+
+        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#mainNavbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbarCollapse">
+          <ul class="navbar-nav mr-auto ml-lg-3">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="shop.html">All Products</a></li>
+            <li class="nav-item active"><a class="nav-link" href="order-tracking.html">Track Order</a></li>
+          </ul>
+
+          <ul class="navbar-nav align-items-center ml-lg-auto">
+            <li class="nav-item mr-2">
+              <a class="nav-action-icon-btn" href="wishlist.html" title="Wishlist">
+                <i class="far fa-heart"></i>
+                <span class="badge-counter-pill wishlist-badge-count" style="display: none;">0</span>
+              </a>
+            </li>
+            <li class="nav-item mr-3">
+              <a class="nav-action-icon-btn" href="cart.html" title="Shopping Cart">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="badge-counter-pill cart-badge-count" style="display: none;">0</span>
+              </a>
+            </li>
+            <div id="nav-user-actions" class="d-flex align-items-center"></div>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <!-- Search Card -->
+        <div class="card p-4 border-0 rounded-2xl shadow-sm bg-white mb-4">
+          <h4 class="font-weight-800 text-dark mb-1"><i class="fas fa-shipping-fast mr-2 text-primary"></i> Track Your Package</h4>
+          <p class="text-muted small mb-4">Enter your 7-character Order ID (e.g. SH-84920) to view real-time delivery status.</p>
+          <div class="input-group">
+            <input type="text" id="track-order-input" class="form-control form-control-lg text-uppercase font-weight-bold" placeholder="Enter Order ID (e.g. SH-84920)">
+            <div class="input-group-append">
+              <button class="btn btn-primary font-weight-bold px-4" type="button" onclick="performTracking()">
+                Track Status
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tracking Results Card -->
+        <div id="tracking-result-card" class="card p-4 p-md-5 border-0 rounded-2xl shadow-sm bg-white" style="display: none;">
+          <!-- Top Info Bar -->
+          <div class="d-flex justify-content-between align-items-center flex-wrap pb-4 border-bottom mb-4">
+            <div>
+              <span class="text-muted small text-uppercase font-weight-bold">Order ID</span>
+              <h4 class="font-weight-800 text-dark mb-0" id="trk-order-id">SH-84920</h4>
+            </div>
+            <div class="text-md-right mt-2 mt-md-0">
+              <span class="text-muted small text-uppercase font-weight-bold">Estimated Delivery</span>
+              <h5 class="font-weight-800 text-success mb-0" id="trk-est-date">Friday, 02 Oct 2026</h5>
+            </div>
+          </div>
+
+          <!-- Timeline Stepper -->
+          <div class="tracking-timeline-box mb-4">
+            <div class="timeline-step completed" id="trk-step-1">
+              <div class="timeline-step-badge"><i class="fas fa-check"></i></div>
+              <div>
+                <h6 class="font-weight-bold mb-1 text-dark">Order Confirmed</h6>
+                <small class="text-muted" id="trk-date-confirmed">Order placed and verified</small>
+              </div>
+            </div>
+
+            <div class="timeline-step completed" id="trk-step-2">
+              <div class="timeline-step-badge"><i class="fas fa-box"></i></div>
+              <div>
+                <h6 class="font-weight-bold mb-1 text-dark">Order Processed & Packed</h6>
+                <small class="text-muted">Item safely packaged at fulfillment hub</small>
+              </div>
+            </div>
+
+            <div class="timeline-step active" id="trk-step-3">
+              <div class="timeline-step-badge"><i class="fas fa-plane-departure"></i></div>
+              <div>
+                <h6 class="font-weight-bold mb-1 text-dark">In Transit / Shipped</h6>
+                <small class="text-muted">Dispatched with BlueDart Express (Tracking #BLUEDART-849102)</small>
+              </div>
+            </div>
+
+            <div class="timeline-step" id="trk-step-4">
+              <div class="timeline-step-badge"><i class="fas fa-truck"></i></div>
+              <div>
+                <h6 class="font-weight-bold mb-1 text-dark">Out for Delivery</h6>
+                <small class="text-muted">Courier executive assigned for final delivery</small>
+              </div>
+            </div>
+
+            <div class="timeline-step" id="trk-step-5">
+              <div class="timeline-step-badge"><i class="fas fa-house-chimney"></i></div>
+              <div>
+                <h6 class="font-weight-bold mb-1 text-dark">Delivered</h6>
+                <small class="text-muted">Package safely delivered with OTP verification</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Items in this Order -->
+          <div class="p-3 bg-light rounded-xl">
+            <h6 class="font-weight-bold text-dark mb-3">Package Contents</h6>
+            <div id="trk-items-container">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container text-center">
+      <p class="mb-0 text-muted small">&copy; 2026 StyleHub Retail Pvt Ltd. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="ecommerce.js"></script>
+
+  <script>
+    function performTracking(passedId) {
+      const orderId = (passedId || document.getElementById('track-order-input').value).trim();
+      if (!orderId) {
+        alert('Please enter an Order ID.');
+        return;
+      }
+
+      const order = getOrderById(orderId);
+      const card = document.getElementById('tracking-result-card');
+
+      if (!order) {
+        alert(`No order found matching "${orderId}". Try default demo order SH-84920 or SH-84921.`);
+        return;
+      }
+
+      document.getElementById('trk-order-id').innerText = order.id;
+      document.getElementById('trk-est-date').innerText = order.deliveryDate || 'In 2 business days';
+      document.getElementById('trk-date-confirmed').innerText = `Order placed on ${order.date}`;
+
+      // Update Step Active states based on order status
+      const s1 = document.getElementById('trk-step-1');
+      const s2 = document.getElementById('trk-step-2');
+      const s3 = document.getElementById('trk-step-3');
+      const s4 = document.getElementById('trk-step-4');
+      const s5 = document.getElementById('trk-step-5');
+
+      if (order.status === 'Delivered') {
+        s1.className = 'timeline-step completed';
+        s2.className = 'timeline-step completed';
+        s3.className = 'timeline-step completed';
+        s4.className = 'timeline-step completed';
+        s5.className = 'timeline-step completed';
+      } else {
+        s1.className = 'timeline-step completed';
+        s2.className = 'timeline-step completed';
+        s3.className = 'timeline-step active';
+        s4.className = 'timeline-step';
+        s5.className = 'timeline-step';
+      }
+
+      // Items
+      document.getElementById('trk-items-container').innerHTML = (order.items || []).map(item => `
+        <div class="d-flex align-items-center mb-2 pb-2 border-bottom small">
+          <img src="${item.image}" alt="${item.name}" class="rounded mr-3" style="width: 45px; height: 45px; object-fit: cover;">
+          <div class="flex-grow-1 overflow-hidden">
+            <strong class="text-dark d-block text-truncate">${item.name}</strong>
+            <span class="text-muted">Qty: ${item.quantity} | ₹${item.price}</span>
+          </div>
+        </div>
+      `).join('');
+
+      card.style.display = 'block';
+      window.scrollTo({ top: card.offsetTop - 70, behavior: 'smooth' });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const passedId = urlParams.get('orderId');
+      if (passedId) {
+        document.getElementById('track-order-input').value = passedId;
+        performTracking(passedId);
+      } else {
+        // default preview
+        document.getElementById('track-order-input').value = 'SH-84920';
+        performTracking('SH-84920');
+      }
+    });
+  </script>
+</body>
+</html>

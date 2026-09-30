@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details | StyleHub</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="ecommerce.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-announcement-bar">
+    <span>✨ SPECIAL OFFER: USE CODE <span class="coupon-badge">WELCOME10</span> FOR 10% OFF ON YOUR FIRST ORDER</span>
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light px-0">
+        <a class="navbar-brand" href="index.html">
+          <div class="brand-icon-box"><i class="fas fa-bag-shopping"></i></div>
+          Style<span>Hub</span>
+        </a>
+
+        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#mainNavbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbarCollapse">
+          <ul class="navbar-nav mr-auto ml-lg-3">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="shop.html">All Products</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="catDrop" role="button" data-toggle="dropdown">Categories</a>
+              <div class="dropdown-menu border-0 shadow-lg">
+                <a class="dropdown-item py-2" href="men.html">Men's Collection</a>
+                <a class="dropdown-item py-2" href="women.html">Women's Collection</a>
+                <a class="dropdown-item py-2" href="kids.html">Kids' Collection</a>
+              </div>
+            </li>
+          </ul>
+
+          <div class="search-container-box mx-lg-3 my-2 my-lg-0">
+            <div class="search-input-wrapper">
+              <i class="fas fa-search search-icon"></i>
+              <input type="text" class="global-search-input" placeholder="Search fashion, products..." autocomplete="off">
+            </div>
+            <div id="search-dropdown-results"></div>
+          </div>
+
+          <ul class="navbar-nav align-items-center ml-lg-auto">
+            <li class="nav-item mr-2">
+              <a class="nav-action-icon-btn" href="wishlist.html" title="Wishlist">
+                <i class="far fa-heart"></i>
+                <span class="badge-counter-pill wishlist-badge-count" style="display: none;">0</span>
+              </a>
+            </li>
+            <li class="nav-item mr-3">
+              <a class="nav-action-icon-btn" href="cart.html" title="Shopping Cart">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="badge-counter-pill cart-badge-count" style="display: none;">0</span>
+              </a>
+            </li>
+            <div id="nav-user-actions" class="d-flex align-items-center">
+              <li class="nav-item">
+                <a class="nav-link font-weight-bold" href="auth.html"><i class="far fa-user-circle mr-1"></i> Sign In</a>
+              </li>
+            </div>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container my-4">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb bg-transparent p-0 mb-4 small">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item"><a href="shop.html">Shop</a></li>
+        <li class="breadcrumb-item" id="breadcrumb-category">Fashion</li>
+        <li class="breadcrumb-item active text-dark font-weight-bold text-truncate" id="breadcrumb-title" style="max-width: 280px;">Product</li>
+      </ol>
+    </nav>
+
+    <!-- Product Details Main Section -->
+    <div class="row" id="product-detail-wrapper">
+      <!-- Left: Image Gallery -->
+      <div class="col-lg-6 mb-4">
+        <div class="product-gallery-main" id="main-gallery-view">
+          <img src="" id="detail-main-img" alt="Product Image" class="img-fluid">
+          <button class="btn-wishlist-toggle" id="detail-wishlist-btn" onclick="toggleDetailWishlist()" title="Add to Wishlist" style="top: 20px; right: 20px;">
+            <i class="far fa-heart"></i>
+          </button>
+        </div>
+        <div class="product-gallery-thumbs" id="detail-thumbs-container">
+          <!-- Thumbnails populated dynamically -->
+        </div>
+      </div>
+
+      <!-- Right: Product Specifications & Actions -->
+      <div class="col-lg-6 mb-4">
+        <div class="pl-lg-3">
+          <span class="badge badge-light text-primary font-weight-bold px-3 py-1 rounded-pill mb-2" id="detail-cat-badge">Category</span>
+          <h2 class="font-weight-800 text-dark mb-2" id="detail-title">Loading product...</h2>
+          
+          <!-- Rating Row -->
+          <div class="d-flex align-items-center mb-3">
+            <div class="text-warning mr-2">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+              <span class="font-weight-bold text-dark ml-1" id="detail-rating">4.6</span>
+            </div>
+            <span class="text-muted small" id="detail-reviews">(120 customer reviews)</span>
+            <span class="badge badge-success ml-3 font-weight-bold"><i class="fas fa-check-circle mr-1"></i> In Stock</span>
+          </div>
+
+          <!-- Price Row -->
+          <div class="d-flex align-items-baseline gap-2 mb-3 pb-3 border-bottom">
+            <span class="h2 font-weight-800 text-dark mb-0 mr-3" id="detail-price">₹0</span>
+            <span class="h5 text-muted text-decoration-line-through mb-0 mr-3" id="detail-original-price">₹0</span>
+            <span class="badge badge-danger font-weight-800 px-2 py-1 rounded" id="detail-discount-badge">0% OFF</span>
+          </div>
+
+          <!-- Description -->
+          <p class="text-muted mb-4" id="detail-description"></p>
+
+          <!-- Size Selector -->
+          <div class="mb-4" id="detail-sizes-box">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <label class="font-weight-700 text-dark small text-uppercase mb-0">Select Size:</label>
+              <a href="#" class="small text-primary font-weight-600" data-toggle="modal" data-target="#sizeChartModal"><i class="fas fa-ruler mr-1"></i> Size Chart</a>
+            </div>
+            <div class="d-flex flex-wrap gap-2 size-pill-group" id="detail-size-pills">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+          <!-- Quantity Stepper & Buttons -->
+          <div class="d-flex align-items-center gap-3 mb-4">
+            <div class="quantity-stepper mr-3">
+              <button type="button" class="qty-btn" onclick="stepDetailQty(-1)">-</button>
+              <input type="text" class="qty-input" id="detail-qty-input" value="1" readonly>
+              <button type="button" class="qty-btn" onclick="stepDetailQty(1)">+</button>
+            </div>
+            <button class="btn btn-primary font-weight-bold px-4 py-2 flex-grow-1 shadow-sm rounded-pill" onclick="handleDetailAddToCart()">
+              <i class="fas fa-shopping-bag mr-2"></i> Add to Cart
+            </button>
+            <button class="btn btn-dark font-weight-bold px-4 py-2 ml-2 rounded-pill" onclick="handleDetailBuyNow()">
+              Buy Now
+            </button>
+          </div>
+
+          <!-- Delivery Check Box -->
+          <div class="card p-3 border-0 bg-light rounded-xl mb-4">
+            <label class="font-weight-700 text-dark small text-uppercase mb-2"><i class="fas fa-truck mr-1 text-primary"></i> Check Estimated Delivery</label>
+            <div class="input-group" style="max-width: 320px;">
+              <input type="text" id="pincode-input" class="form-control form-control-sm" placeholder="Enter Pincode (e.g. 682001)" maxlength="6">
+              <div class="input-group-append">
+                <button class="btn btn-dark btn-sm font-weight-bold" type="button" onclick="checkPincode()">Check</button>
+              </div>
+            </div>
+            <small class="text-success mt-2 font-weight-600" id="pincode-result" style="display: none;">
+              <i class="fas fa-clock mr-1"></i> Estimated delivery by <strong>Friday, 2-3 business days</strong>. Cash on delivery available!
+            </small>
+          </div>
+
+          <!-- Trust Badges -->
+          <div class="row pt-2 text-center">
+            <div class="col-4">
+              <i class="fas fa-shield-alt text-primary h4 mb-1"></i>
+              <p class="small font-weight-600 text-dark mb-0">100% Genuine</p>
+            </div>
+            <div class="col-4">
+              <i class="fas fa-arrow-rotate-left text-success h4 mb-1"></i>
+              <p class="small font-weight-600 text-dark mb-0">30-Day Returns</p>
+            </div>
+            <div class="col-4">
+              <i class="fas fa-certificate text-warning h4 mb-1"></i>
+              <p class="small font-weight-600 text-dark mb-0">Assured Quality</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Related Products -->
+    <section class="my-5 pt-4 border-top">
+      <div class="section-header-row">
+        <div>
+          <h3 class="section-main-heading">You May Also Like</h3>
+          <p class="section-subheading">Similar premium styles curated to match this look</p>
+        </div>
+      </div>
+      <div class="row" id="related-products-grid">
+        <!-- Rendered dynamically -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Size Chart Modal -->
+  <div class="modal fade" id="sizeChartModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content border-0 rounded-xl">
+        <div class="modal-header bg-dark text-white">
+          <h5 class="modal-title font-weight-bold"><i class="fas fa-ruler mr-2"></i> Standard Size Guide (Inches)</h5>
+          <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body p-4">
+          <table class="table table-bordered text-center small mb-0">
+            <thead class="bg-light font-weight-bold">
+              <tr><th>Size</th><th>Chest (in)</th><th>Waist (in)</th><th>Length (in)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>S</strong></td><td>38</td><td>30 - 32</td><td>27</td></tr>
+              <tr><td><strong>M</strong></td><td>40</td><td>32 - 34</td><td>28</td></tr>
+              <tr><td><strong>L</strong></td><td>42</td><td>34 - 36</td><td>29</td></tr>
+              <tr><td><strong>XL</strong></td><td>44</td><td>36 - 38</td><td>30</td></tr>
+              <tr><td><strong>XXL</strong></td><td>46</td><td>38 - 40</td><td>31</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container text-center">
+      <p class="mb-0 text-muted small">&copy; 2026 StyleHub E-Commerce Store. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="ecommerce.js"></script>
+
+  <script>
+    let currentProduct = null;
+
+    function stepDetailQty(delta) {
+      const input = document.getElementById('detail-qty-input');
+      let val = parseInt(input.value) + delta;
+      if (val < 1) val = 1;
+      if (val > 10) val = 10;
+      input.value = val;
+    }
+
+    function checkPincode() {
+      const pin = document.getElementById('pincode-input').value.trim();
+      const res = document.getElementById('pincode-result');
+      if (pin.length === 6 && /^\d+$/.test(pin)) {
+        res.style.display = 'block';
+      } else {
+        alert('Please enter a valid 6-digit postal pincode.');
+      }
+    }
+
+    function toggleDetailWishlist() {
+      if (!currentProduct) return;
+      const active = toggleWishlist(currentProduct);
+      const btn = document.getElementById('detail-wishlist-btn');
+      btn.classList.toggle('active', active);
+      const icon = btn.querySelector('i');
+      icon.className = active ? 'fas fa-heart text-danger' : 'far fa-heart';
+    }
+
+    function handleDetailAddToCart() {
+      if (!currentProduct) return;
+      const qty = parseInt(document.getElementById('detail-qty-input').value) || 1;
+      const activeSizeBtn = document.querySelector('#detail-size-pills .size-pill.active');
+      const size = activeSizeBtn ? activeSizeBtn.innerText.trim() : null;
+      addToCart(currentProduct, qty, size);
+    }
+
+    function handleDetailBuyNow() {
+      handleDetailAddToCart();
+      window.location.href = 'checkout.html';
+    }
+
+    function switchDetailMainImage(src, btn) {
+      document.getElementById('detail-main-img').src = src;
+      document.querySelectorAll('.thumb-item-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = urlParams.get('id') || 'm1';
+      currentProduct = getProductById(productId);
+
+      if (!currentProduct) {
+        currentProduct = getProducts()[0];
+      }
+
+      // Populate Data
+      document.getElementById('breadcrumb-category').innerText = currentProduct.category;
+      document.getElementById('breadcrumb-title').innerText = currentProduct.name;
+      document.getElementById('detail-cat-badge').innerText = `${currentProduct.category} • ${currentProduct.subCategory || 'Fashion'}`;
+      document.getElementById('detail-title').innerText = currentProduct.name;
+      document.getElementById('detail-rating').innerText = currentProduct.rating || '4.5';
+      document.getElementById('detail-reviews').innerText = `(${currentProduct.reviewsCount || 45} customer reviews)`;
+      document.getElementById('detail-price').innerText = `₹${currentProduct.price.toLocaleString('en-IN')}`;
+      document.getElementById('detail-original-price').innerText = `₹${(currentProduct.originalPrice || currentProduct.price * 1.5).toLocaleString('en-IN')}`;
+      
+      const discount = currentProduct.discount || Math.round(((currentProduct.originalPrice - currentProduct.price) / currentProduct.originalPrice) * 100);
+      document.getElementById('detail-discount-badge').innerText = `${discount}% OFF`;
+      document.getElementById('detail-description').innerText = currentProduct.description;
+
+      // Main Image & Thumbs
+      document.getElementById('detail-main-img').src = currentProduct.image;
+      const thumbs = currentProduct.thumbnails && currentProduct.thumbnails.length > 0 ? currentProduct.thumbnails : [currentProduct.image];
+      document.getElementById('detail-thumbs-container').innerHTML = thumbs.map((t, idx) => `
+        <button type="button" class="thumb-item-btn ${idx === 0 ? 'active' : ''}" onclick="switchDetailMainImage('${t}', this)">
+          <img src="${t}" alt="Thumbnail">
+        </button>
+      `).join('');
+
+      // Wishlist Button State
+      const inWish = isInWishlist(currentProduct.id);
+      const wishBtn = document.getElementById('detail-wishlist-btn');
+      wishBtn.classList.toggle('active', inWish);
+      wishBtn.querySelector('i').className = inWish ? 'fas fa-heart text-danger' : 'far fa-heart';
+
+      // Sizes
+      const sizes = currentProduct.sizes && currentProduct.sizes.length > 0 ? currentProduct.sizes : ['Standard'];
+      document.getElementById('detail-size-pills').innerHTML = sizes.map((s, idx) => `
+        <button type="button" class="btn size-pill ${idx === 0 ? 'active' : ''}" onclick="selectQuickViewPill(this)">${s}</button>
+      `).join('');
+
+      // Related Products
+      const all = getProducts();
+      const related = all.filter(p => p.id !== currentProduct.id && (p.category === currentProduct.category || p.subCategory === currentProduct.subCategory)).slice(0, 4);
+      document.getElementById('related-products-grid').innerHTML = related.map(p => renderProductCard(p)).join('');
+      updateWishlistBadges();
+    });
+  </script>
+</body>
+</html>

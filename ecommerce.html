@@ -4,431 +4,475 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StyleHub | Online Fashion Store</title>
+  <title>StyleHub | Premium Online Fashion & Lifestyle Store</title>
 
-  <!-- Google Fonts & Font Awesome -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Google Fonts & Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Bootstrap 4 CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   
-  <!-- Custom CSS -->
+  <!-- Custom Modern Design System -->
   <link rel="stylesheet" href="ecommerce.css">
 </head>
 <body>
 
-  <!-- Navigation Bar -->
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-      <div class="container">
+  <!-- Top Announcement Bar -->
+  <div class="top-announcement-bar">
+    <span>✨ FESTIVE SEASON SALE: UP TO 50% OFF + FREE SHIPPING OVER ₹999! USE CODE: <span class="coupon-badge">STYLE20</span></span>
+  </div>
+
+  <!-- Main Header & Sticky Navigation -->
+  <header class="main-header">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light px-0">
+        <!-- Brand Logo -->
         <a class="navbar-brand" href="index.html">
-          <i class="fas fa-shopping-bag"></i> Style<span>Hub</span>
+          <div class="brand-icon-box">
+            <i class="fas fa-bag-shopping"></i>
+          </div>
+          Style<span>Hub</span>
         </a>
-        
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+
+        <!-- Mobile Toggler -->
+        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#mainNavbarCollapse">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-          <ul class="navbar-nav mr-auto">
+        <!-- Navbar Links & Search -->
+        <div class="collapse navbar-collapse" id="mainNavbarCollapse">
+          <!-- Categories & Navigation -->
+          <ul class="navbar-nav mr-auto ml-lg-3">
             <li class="nav-item active">
               <a class="nav-link" href="index.html">Home</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="shop.html">All Products</a>
+            </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Category
+              <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" data-toggle="dropdown">
+                Categories
               </a>
-              <div class="dropdown-menu" aria-labelledby="categoryDropdown">
-                <a class="dropdown-item" href="men.html"><i class="fas fa-male mr-2"></i> Men's Collection</a>
-                <a class="dropdown-item" href="women.html"><i class="fas fa-female mr-2"></i> Women's Collection</a>
-                <a class="dropdown-item" href="kids.html"><i class="fas fa-child mr-2"></i> Kids' Collection</a>
+              <div class="dropdown-menu border-0 shadow-lg" aria-labelledby="categoriesDropdown">
+                <a class="dropdown-item py-2" href="men.html"><i class="fas fa-male mr-2 text-primary"></i> Men's Collection</a>
+                <a class="dropdown-item py-2" href="women.html"><i class="fas fa-female mr-2 text-danger"></i> Women's Collection</a>
+                <a class="dropdown-item py-2" href="kids.html"><i class="fas fa-child mr-2 text-success"></i> Kids' Collection</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item py-2" href="shop.html"><i class="fas fa-border-all mr-2 text-info"></i> Browse All Products</a>
               </div>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="order-tracking.html">Track Order</a>
+            </li>
           </ul>
 
-          <ul class="navbar-nav ml-auto align-items-center" id="nav-auth-links">
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-toggle="modal" data-target="#signInModal">
-                <i class="fas fa-sign-in-alt mr-1"></i> Sign In
+          <!-- Live Global Search Input -->
+          <div class="search-container-box mx-lg-3 my-2 my-lg-0">
+            <div class="search-input-wrapper">
+              <i class="fas fa-search search-icon"></i>
+              <input type="text" class="global-search-input" placeholder="Search fashion, brands, categories..." autocomplete="off">
+            </div>
+            <!-- Live Suggestions Container -->
+            <div id="search-dropdown-results"></div>
+          </div>
+
+          <!-- User Actions (Wishlist, Cart, Profile) -->
+          <ul class="navbar-nav align-items-center ml-lg-auto" id="nav-actions-group">
+            <li class="nav-item mr-2">
+              <a class="nav-action-icon-btn" href="wishlist.html" title="Wishlist">
+                <i class="far fa-heart"></i>
+                <span class="badge-counter-pill wishlist-badge-count" style="display: none;">0</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-toggle="modal" data-target="#signUpModal">
-                <i class="fas fa-user-plus mr-1"></i> Sign Up
+            <li class="nav-item mr-3">
+              <a class="nav-action-icon-btn" href="cart.html" title="Shopping Cart">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="badge-counter-pill cart-badge-count" style="display: none;">0</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link btn btn-outline-info text-white ml-lg-2 px-3 py-1" href="cart.html">
-                <i class="fas fa-shopping-cart mr-1"></i> Cart
-                <span class="cart-badge cart-badge-count">0</span>
-              </a>
-            </li>
+            <!-- User Login / Profile Container -->
+            <div id="nav-user-actions" class="d-flex align-items-center">
+              <li class="nav-item">
+                <a class="nav-link font-weight-bold" href="auth.html">
+                  <i class="far fa-user-circle mr-1"></i> Sign In
+                </a>
+              </li>
+            </div>
           </ul>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </div>
   </header>
 
-  <main class="container mt-4">
-    <!-- Hero Carousel -->
-    <div id="heroCarousel" class="carousel slide" data-ride="carousel" data-interval="3500">
-      <ol class="carousel-indicators">
-        <li data-target="#heroCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#heroCarousel" data-slide-to="1"></li>
-        <li data-target="#heroCarousel" data-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="images/banner1.jpg" class="d-block w-100" alt="Special Sale">
+  <main>
+    <!-- Hero Banner Carousel Section -->
+    <section class="container hero-carousel-section">
+      <div id="heroCarousel" class="carousel slide hero-slider-wrap" data-ride="carousel" data-interval="4000">
+        <ol class="carousel-indicators">
+          <li data-target="#heroCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#heroCarousel" data-slide-to="1"></li>
+          <li data-target="#heroCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <!-- Slide 1 -->
+          <div class="carousel-item active">
+            <img src="images/banner1.jpg" alt="Festive Fashion Sale">
+            <div class="hero-caption-overlay">
+              <div class="hero-content-box">
+                <span class="hero-tagline-chip"><i class="fas fa-fire mr-1 text-warning"></i> Autumn-Winter 2026</span>
+                <h1 class="hero-headline">Elevate Your Everyday Style</h1>
+                <p class="hero-subtext">Discover curated contemporary collections with up to 50% off on premium apparel, footwear, and accessories.</p>
+                <div class="d-flex gap-3">
+                  <a href="shop.html" class="btn btn-primary px-4 py-2 font-weight-bold rounded-pill shadow">Shop Collection</a>
+                  <a href="men.html" class="btn btn-outline-light px-4 py-2 font-weight-bold rounded-pill ml-2">Explore Men</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 2 -->
+          <div class="carousel-item">
+            <img src="images/banner2.jpg" alt="Women Haute Couture">
+            <div class="hero-caption-overlay">
+              <div class="hero-content-box">
+                <span class="hero-tagline-chip"><i class="fas fa-gem mr-1 text-info"></i> Luxury Ethnic & Western</span>
+                <h1 class="hero-headline">Timeless Elegance & Comfort</h1>
+                <p class="hero-subtext">Handcrafted ethnic wear, designer lehengas, and contemporary fits tailored to your perfection.</p>
+                <div class="d-flex gap-3">
+                  <a href="women.html" class="btn btn-primary px-4 py-2 font-weight-bold rounded-pill shadow">Women's Edit</a>
+                  <a href="shop.html" class="btn btn-outline-light px-4 py-2 font-weight-bold rounded-pill ml-2">All Products</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 3 -->
+          <div class="carousel-item">
+            <img src="images/banner3.jpg" alt="Urban Streetwear">
+            <div class="hero-caption-overlay">
+              <div class="hero-content-box">
+                <span class="hero-tagline-chip"><i class="fas fa-bolt mr-1 text-warning"></i> Trending Now</span>
+                <h1 class="hero-headline">Bold Urban Streetwear</h1>
+                <p class="hero-subtext">Casual staples, bomber jackets, and stretch denim built for modern comfort and active lifestyles.</p>
+                <div class="d-flex gap-3">
+                  <a href="shop.html?category=Men" class="btn btn-primary px-4 py-2 font-weight-bold rounded-pill shadow">Discover Now</a>
+                  <a href="kids.html" class="btn btn-outline-light px-4 py-2 font-weight-bold rounded-pill ml-2">Kids Wear</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="carousel-item">
-          <img src="images/banner2.jpg" class="d-block w-100" alt="Athletic Fashion">
-        </div>
-        <div class="carousel-item">
-          <img src="images/banner3.jpg" class="d-block w-100" alt="Trend Collection">
+        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </a>
+        <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Trust Features Bar -->
+    <section class="container">
+      <div class="trust-features-bar">
+        <div class="row">
+          <div class="col-lg-3 col-6 mb-3 mb-lg-0">
+            <div class="trust-item">
+              <div class="trust-icon-box"><i class="fas fa-shipping-fast"></i></div>
+              <div class="trust-text">
+                <h6>Free Fast Delivery</h6>
+                <p>On orders above ₹999</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-6 mb-3 mb-lg-0">
+            <div class="trust-item">
+              <div class="trust-icon-box"><i class="fas fa-shield-halved"></i></div>
+              <div class="trust-text">
+                <h6>100% Genuine Brands</h6>
+                <p>Quality tested products</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-6">
+            <div class="trust-item">
+              <div class="trust-icon-box"><i class="fas fa-arrow-rotate-left"></i></div>
+              <div class="trust-text">
+                <h6>Easy 30-Day Returns</h6>
+                <p>Hassle-free refunds</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-6">
+            <div class="trust-item">
+              <div class="trust-icon-box"><i class="fas fa-headset"></i></div>
+              <div class="trust-text">
+                <h6>24/7 Dedicated Support</h6>
+                <p>Expert customer care</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
+    </section>
 
-    <!-- Value Propositions Banner -->
-    <div class="features-section">
+    <!-- Popular Category Tiles -->
+    <section class="container mb-5">
+      <div class="section-header-row">
+        <div>
+          <h2 class="section-main-heading">Shop By Category</h2>
+          <p class="section-subheading">Hand-picked styles tailored for every member of your family</p>
+        </div>
+        <a href="shop.html" class="font-weight-bold text-primary">View All Categories <i class="fas fa-arrow-right ml-1"></i></a>
+      </div>
+
       <div class="row">
-        <div class="col-md-3 col-6 feature-box">
-          <i class="fas fa-truck-fast"></i>
-          <h5>Free Shipping</h5>
-          <p>On orders above ₹999</p>
-        </div>
-        <div class="col-md-3 col-6 feature-box">
-          <i class="fas fa-shield-alt"></i>
-          <h5>100% Genuine</h5>
-          <p>Direct from top brands</p>
-        </div>
-        <div class="col-md-3 col-6 feature-box">
-          <i class="fas fa-rotate-left"></i>
-          <h5>Easy 30-Day Returns</h5>
-          <p>Hassle-free refunds</p>
-        </div>
-        <div class="col-md-3 col-6 feature-box">
-          <i class="fas fa-headset"></i>
-          <h5>24/7 Support</h5>
-          <p>Dedicated customer care</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Featured Categories Quick Nav -->
-    <div class="row mb-5">
-      <div class="col-md-4 mb-3">
-        <a href="men.html" class="text-decoration-none">
-          <div class="card bg-dark text-white border-0 shadow-sm overflow-hidden" style="border-radius: 12px; height: 160px;">
-            <img src="images/men_banner.jpg" class="card-img" style="opacity: 0.7; height: 100%; object-fit: cover;" alt="Men">
-            <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center">
-              <h3 class="card-title font-weight-bold mb-1">MEN</h3>
-              <span class="btn btn-sm btn-light font-weight-bold">Shop Now <i class="fas fa-arrow-right ml-1"></i></span>
+        <!-- Men Category -->
+        <div class="col-md-4 mb-4">
+          <div class="card category-tile-card">
+            <img src="images/men_banner.jpg" class="category-tile-img" alt="Men's Collection">
+            <div class="category-tile-overlay">
+              <span class="badge badge-light text-primary font-weight-bold align-self-start mb-2">120+ Styles</span>
+              <h3 class="category-tile-title">MEN'S WEAR</h3>
+              <a href="men.html" class="category-tile-link">Explore Men's Shop <i class="fas fa-arrow-right"></i></a>
             </div>
           </div>
+        </div>
+        <!-- Women Category -->
+        <div class="col-md-4 mb-4">
+          <div class="card category-tile-card">
+            <img src="images/women_banner.jpg" class="category-tile-img" alt="Women's Collection">
+            <div class="category-tile-overlay">
+              <span class="badge badge-light text-danger font-weight-bold align-self-start mb-2">250+ Styles</span>
+              <h3 class="category-tile-title">WOMEN'S WEAR</h3>
+              <a href="women.html" class="category-tile-link">Explore Women's Shop <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <!-- Kids Category -->
+        <div class="col-md-4 mb-4">
+          <div class="card category-tile-card">
+            <img src="images/kids_banner.jpg" class="category-tile-img" alt="Kids' Collection">
+            <div class="category-tile-overlay">
+              <span class="badge badge-light text-success font-weight-bold align-self-start mb-2">80+ Styles</span>
+              <h3 class="category-tile-title">KIDS' FASHION</h3>
+              <a href="kids.html" class="category-tile-link">Explore Kids' Shop <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tabbed Products Section: Featured, Trending, New, Best Sellers -->
+    <section class="container mb-5">
+      <div class="section-header-row">
+        <div>
+          <h2 class="section-main-heading">Featured Collections</h2>
+          <p class="section-subheading">Our most sought-after apparel and trendsetting accessories</p>
+        </div>
+        <ul class="nav nav-pills filter-nav-pills" id="productFilterTabs" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="tab-featured" data-toggle="pill" href="#pane-featured" role="tab" onclick="loadTabProducts('featured')">Featured</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="tab-trending" data-toggle="pill" href="#pane-trending" role="tab" onclick="loadTabProducts('trending')">Trending</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="tab-new" data-toggle="pill" href="#pane-new" role="tab" onclick="loadTabProducts('new')">New Arrivals</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="tab-bestseller" data-toggle="pill" href="#pane-bestseller" role="tab" onclick="loadTabProducts('bestseller')">Best Sellers</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Tab Content Area -->
+      <div class="row" id="tab-products-grid">
+        <!-- Dynamically rendered by JavaScript -->
+      </div>
+
+      <div class="text-center mt-4">
+        <a href="shop.html" class="btn btn-outline-primary px-4 py-2 font-weight-bold rounded-pill">
+          Explore All Products in Store <i class="fas fa-arrow-right ml-1"></i>
         </a>
       </div>
-      <div class="col-md-4 mb-3">
-        <a href="women.html" class="text-decoration-none">
-          <div class="card bg-dark text-white border-0 shadow-sm overflow-hidden" style="border-radius: 12px; height: 160px;">
-            <img src="images/women_banner.jpg" class="card-img" style="opacity: 0.7; height: 100%; object-fit: cover;" alt="Women">
-            <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center">
-              <h3 class="card-title font-weight-bold mb-1">WOMEN</h3>
-              <span class="btn btn-sm btn-light font-weight-bold">Shop Now <i class="fas fa-arrow-right ml-1"></i></span>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-4 mb-3">
-        <a href="kids.html" class="text-decoration-none">
-          <div class="card bg-dark text-white border-0 shadow-sm overflow-hidden" style="border-radius: 12px; height: 160px;">
-            <img src="images/kids_banner.jpg" class="card-img" style="opacity: 0.7; height: 100%; object-fit: cover;" alt="Kids">
-            <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center">
-              <h3 class="card-title font-weight-bold mb-1">KIDS</h3>
-              <span class="btn btn-sm btn-light font-weight-bold">Shop Now <i class="fas fa-arrow-right ml-1"></i></span>
-            </div>
-          </div>
-        </a>
-      </div>
-    </div>
+    </section>
 
-    <!-- Featured Products Section -->
-    <h2 class="section-title">Trending Styles</h2>
-    
-    <div class="row">
-      <!-- Product 1 -->
-      <div class="col-xl-4 col-md-6 col-12 mb-4">
-        <div class="product-card" data-id="p1" data-name="Men Premium Casual T-Shirt" data-price="799" data-category="Men's Wear" data-image="images/men1.jpg">
-          <div class="product-img-wrap">
-            <span class="discount-badge">45% OFF</span>
-            <img src="images/men1.jpg" alt="Men Casual T-Shirt">
+    <!-- Deal of the Day with Live Countdown -->
+    <section class="container">
+      <div class="deal-banner-section">
+        <div class="row align-items-center">
+          <div class="col-lg-7">
+            <span class="badge badge-warning font-weight-800 text-dark px-3 py-1 rounded-pill mb-3">DEAL OF THE DAY</span>
+            <h2 class="font-weight-800 display-5 mb-2">Festive Grand Savings: Extra 20% OFF</h2>
+            <p class="text-light lead mb-2">Upgrade your wardrobe today. Use exclusive coupon code <strong class="text-warning">STYLE20</strong> at checkout.</p>
+            
+            <!-- Live Countdown Timer Display -->
+            <div id="deal-timer-display" class="deal-timer-box">
+              <!-- Rendered by ecommerce.js -->
+            </div>
+
+            <div>
+              <a href="shop.html" class="btn btn-warning px-4 py-2 font-weight-bold rounded-pill shadow-lg mr-2">Claim Offer Now</a>
+              <a href="cart.html" class="btn btn-outline-light px-4 py-2 font-weight-bold rounded-pill">View Cart</a>
+            </div>
           </div>
-          <div class="card-body">
-            <div class="product-category">Men's Fashion</div>
-            <h5 class="product-title">Men Premium Casual T-Shirt</h5>
-            <div class="product-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-              <span class="rating-count">(4.5)</span>
-            </div>
-            <div class="price-wrap">
-              <span class="price-current">₹799</span>
-              <span class="price-original">₹1,499</span>
-            </div>
-            <button class="btn-add-cart">
-              <i class="fas fa-cart-plus"></i> Add to Cart
-            </button>
+          <div class="col-lg-5 text-center mt-4 mt-lg-0">
+            <img src="images/women2.jpg" alt="Deal of the Day" class="img-fluid rounded-xl shadow-2xl" style="max-height: 360px; object-fit: cover;">
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- Product 2 -->
-      <div class="col-xl-4 col-md-6 col-12 mb-4">
-        <div class="product-card" data-id="p2" data-name="Men Slim Fit Denim Jeans" data-price="1499" data-category="Men's Wear" data-image="images/men2.jpg">
-          <div class="product-img-wrap">
-            <span class="discount-badge">50% OFF</span>
-            <img src="images/men2.jpg" alt="Men Slim Fit Jeans">
+    <!-- Customer Reviews / Testimonials -->
+    <section class="container my-5">
+      <div class="section-header-row text-center d-block">
+        <h2 class="section-main-heading">Loved By 10,000+ Customers</h2>
+        <p class="section-subheading">See authentic feedback and reviews from happy shoppers across India</p>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 p-4 border-0 shadow-sm rounded-xl bg-white">
+            <div class="d-flex align-items-center mb-3">
+              <div class="text-warning mr-2">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <span class="badge badge-success font-weight-bold ml-auto"><i class="fas fa-check-circle mr-1"></i> Verified Buyer</span>
+            </div>
+            <p class="text-muted small mb-4">"The fabric quality of the men's cotton t-shirts and chinos exceeded my expectations. Delivery reached Ernakulam in just 2 days. Truly premium!"</p>
+            <div class="d-flex align-items-center">
+              <div class="user-avatar-circle mr-3">R</div>
+              <div>
+                <h6 class="font-weight-bold mb-0 text-dark">Rahul Menon</h6>
+                <small class="text-muted">Kochi, Kerala</small>
+              </div>
+            </div>
           </div>
-          <div class="card-body">
-            <div class="product-category">Men's Fashion</div>
-            <h5 class="product-title">Men Slim Fit Denim Jeans</h5>
-            <div class="product-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-              <span class="rating-count">(4.1)</span>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 p-4 border-0 shadow-sm rounded-xl bg-white">
+            <div class="d-flex align-items-center mb-3">
+              <div class="text-warning mr-2">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <span class="badge badge-success font-weight-bold ml-auto"><i class="fas fa-check-circle mr-1"></i> Verified Buyer</span>
             </div>
-            <div class="price-wrap">
-              <span class="price-current">₹1,499</span>
-              <span class="price-original">₹2,999</span>
+            <p class="text-muted small mb-4">"Ordered the silk blend festive suit set for a family wedding. The stitching and zari work are immaculate! Also the coupon saved me ₹500 on my cart."</p>
+            <div class="d-flex align-items-center">
+              <div class="user-avatar-circle mr-3" style="background: linear-gradient(135deg, #ec4899, #f43f5e);">A</div>
+              <div>
+                <h6 class="font-weight-bold mb-0 text-dark">Ananya Sharma</h6>
+                <small class="text-muted">Bangalore, Karnataka</small>
+              </div>
             </div>
-            <button class="btn-add-cart">
-              <i class="fas fa-cart-plus"></i> Add to Cart
-            </button>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 p-4 border-0 shadow-sm rounded-xl bg-white">
+            <div class="d-flex align-items-center mb-3">
+              <div class="text-warning mr-2">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+              </div>
+              <span class="badge badge-success font-weight-bold ml-auto"><i class="fas fa-check-circle mr-1"></i> Verified Buyer</span>
+            </div>
+            <p class="text-muted small mb-4">"Bought the kids dinosaur tees and dungarees. Super soft cotton and completely tagless, so zero irritation for my 4-year old. Highly recommended store!"</p>
+            <div class="d-flex align-items-center">
+              <div class="user-avatar-circle mr-3" style="background: linear-gradient(135deg, #10b981, #059669);">P</div>
+              <div>
+                <h6 class="font-weight-bold mb-0 text-dark">Priya Nair</h6>
+                <small class="text-muted">Trivandrum, Kerala</small>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- Product 3 -->
-      <div class="col-xl-4 col-md-6 col-12 mb-4">
-        <div class="product-card" data-id="p3" data-name="Women Designer Anarkali Kurta" data-price="1299" data-category="Women's Wear" data-image="images/women1.jpg">
-          <div class="product-img-wrap">
-            <span class="discount-badge">40% OFF</span>
-            <img src="images/women1.jpg" alt="Designer Kurta">
+    <!-- Newsletter Subscription Section -->
+    <section class="container my-5">
+      <div class="card p-4 p-md-5 border-0 rounded-2xl shadow-lg" style="background: linear-gradient(135deg, #1e293b, #0f172a); color: white;">
+        <div class="row align-items-center">
+          <div class="col-lg-6 mb-3 mb-lg-0">
+            <span class="text-warning font-weight-bold text-uppercase small">Stay in the Loop</span>
+            <h3 class="font-weight-800 mt-1 mb-2">Subscribe & Get ₹300 OFF Your First Order</h3>
+            <p class="text-slate-400 mb-0">Join 50,000+ fashion lovers receiving private sales, coupon drops, and new arrival alerts.</p>
           </div>
-          <div class="card-body">
-            <div class="product-category">Women's Ethnic</div>
-            <h5 class="product-title">Women Designer Anarkali Kurta</h5>
-            <div class="product-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              <span class="rating-count">(4.8)</span>
-            </div>
-            <div class="price-wrap">
-              <span class="price-current">₹1,299</span>
-              <span class="price-original">₹2,199</span>
-            </div>
-            <button class="btn-add-cart">
-              <i class="fas fa-cart-plus"></i> Add to Cart
-            </button>
+          <div class="col-lg-6">
+            <form onsubmit="handleNewsletter(event)" class="d-flex gap-2">
+              <input type="email" id="newsletter-email" class="form-control rounded-pill py-3 px-4 border-0 mr-2" placeholder="Enter your email address..." required>
+              <button type="submit" class="btn btn-primary px-4 py-2 font-weight-bold rounded-pill shadow flex-shrink-0">Subscribe</button>
+            </form>
+            <small class="text-muted mt-2 d-block">We respect your privacy. No spam, unsubscribe anytime.</small>
           </div>
         </div>
       </div>
-
-      <!-- Product 4 -->
-      <div class="col-xl-4 col-md-6 col-12 mb-4">
-        <div class="product-card" data-id="p4" data-name="Luxury Leather Handbag" data-price="1899" data-category="Accessories" data-image="images/women3.jpg">
-          <div class="product-img-wrap">
-            <span class="discount-badge">35% OFF</span>
-            <img src="images/women3.jpg" alt="Luxury Handbag">
-          </div>
-          <div class="card-body">
-            <div class="product-category">Women's Accessories</div>
-            <h5 class="product-title">Luxury Leather Handbag</h5>
-            <div class="product-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-              <span class="rating-count">(4.6)</span>
-            </div>
-            <div class="price-wrap">
-              <span class="price-current">₹1,899</span>
-              <span class="price-original">₹2,899</span>
-            </div>
-            <button class="btn-add-cart">
-              <i class="fas fa-cart-plus"></i> Add to Cart
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Product 5 -->
-      <div class="col-xl-4 col-md-6 col-12 mb-4">
-        <div class="product-card" data-id="p5" data-name="Festive Embroidered Suit Set" data-price="2499" data-category="Women's Wear" data-image="images/women2.jpg">
-          <div class="product-img-wrap">
-            <span class="discount-badge">30% OFF</span>
-            <img src="images/women2.jpg" alt="Festive Suit Set">
-          </div>
-          <div class="card-body">
-            <div class="product-category">Women's Ethnic</div>
-            <h5 class="product-title">Festive Embroidered Suit Set</h5>
-            <div class="product-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              <span class="rating-count">(4.9)</span>
-            </div>
-            <div class="price-wrap">
-              <span class="price-current">₹2,499</span>
-              <span class="price-original">₹3,599</span>
-            </div>
-            <button class="btn-add-cart">
-              <i class="fas fa-cart-plus"></i> Add to Cart
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Product 6 -->
-      <div class="col-xl-4 col-md-6 col-12 mb-4">
-        <div class="product-card" data-id="p6" data-name="Kids Printed Cotton Frock" data-price="699" data-category="Kids' Wear" data-image="images/kids2.jpg">
-          <div class="product-img-wrap">
-            <span class="discount-badge">50% OFF</span>
-            <img src="images/kids2.jpg" alt="Kids Printed Frock">
-          </div>
-          <div class="card-body">
-            <div class="product-category">Kids' Fashion</div>
-            <h5 class="product-title">Kids Printed Cotton Frock</h5>
-            <div class="product-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-              <span class="rating-count">(4.4)</span>
-            </div>
-            <div class="price-wrap">
-              <span class="price-current">₹699</span>
-              <span class="price-original">₹1,399</span>
-            </div>
-            <button class="btn-add-cart">
-              <i class="fas fa-cart-plus"></i> Add to Cart
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+    </section>
   </main>
 
-  <!-- Sign In Modal -->
-  <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="signInModalLabel"><i class="fas fa-user-lock mr-2"></i>Sign In to StyleHub</h5>
-          <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form onsubmit="handleSignIn(event)">
-            <div class="form-group">
-              <label for="signInEmail" class="font-weight-500">Email Address</label>
-              <input type="email" class="form-control" id="signInEmail" placeholder="Enter your email" required>
-            </div>
-            <div class="form-group">
-              <label for="signInPassword" class="font-weight-500">Password</label>
-              <input type="password" class="form-control" id="signInPassword" placeholder="Enter password" required>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block font-weight-bold py-2 mt-4">
-              Sign In
-            </button>
-          </form>
-        </div>
-        <div class="modal-footer justify-content-center">
-          <p class="mb-0 text-muted small">Don't have an account? <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#signUpModal">Sign Up</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Sign Up Modal -->
-  <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="signUpModalLabel"><i class="fas fa-user-plus mr-2"></i>Create StyleHub Account</h5>
-          <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form onsubmit="handleSignUp(event)">
-            <div class="form-group">
-              <label for="signUpName" class="font-weight-500">Full Name</label>
-              <input type="text" class="form-control" id="signUpName" placeholder="Enter your full name" required>
-            </div>
-            <div class="form-group">
-              <label for="signUpEmail" class="font-weight-500">Email Address</label>
-              <input type="email" class="form-control" id="signUpEmail" placeholder="Enter your email" required>
-            </div>
-            <div class="form-group">
-              <label for="signUpPassword" class="font-weight-500">Password</label>
-              <input type="password" class="form-control" id="signUpPassword" placeholder="Create password" required>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block font-weight-bold py-2 mt-4">
-              Create Account
-            </button>
-          </form>
-        </div>
-        <div class="modal-footer justify-content-center">
-          <p class="mb-0 text-muted small">Already have an account? <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#signInModal">Sign In</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <footer class="footer">
+  <!-- Main Footer -->
+  <footer class="main-footer">
     <div class="container">
       <div class="row">
-        <div class="col-lg-3 col-md-6 footer-col">
-          <h4>ONLINE SHOPPING</h4>
-          <ul>
-            <li><a href="men.html">Men's Collection</a></li>
-            <li><a href="women.html">Women's Collection</a></li>
-            <li><a href="kids.html">Kids' Collection</a></li>
-            <li><a href="cart.html">My Cart</a></li>
+        <!-- Brand Info -->
+        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <div class="brand-icon-box" style="width: 32px; height: 32px; font-size: 0.95rem;">
+              <i class="fas fa-bag-shopping"></i>
+            </div>
+            <h4 class="font-weight-bold text-white mb-0 ml-2">Style<span class="text-primary">Hub</span></h4>
+          </div>
+          <p class="footer-brand-tagline">Your trusted online fashion destination for men, women, and kids. Contemporary elegance, premium fabrics, and unmatched convenience.</p>
+          <div class="social-links-box mt-3">
+            <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" title="Twitter"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+          </div>
+        </div>
+
+        <!-- Shop Links -->
+        <div class="col-lg-2 col-6 mb-4 mb-lg-0">
+          <h5 class="footer-col-header">ONLINE SHOP</h5>
+          <ul class="footer-links-list">
+            <li><a href="men.html">Men's Apparel</a></li>
+            <li><a href="women.html">Women's Fashion</a></li>
+            <li><a href="kids.html">Kids' Wear</a></li>
+            <li><a href="shop.html">New Arrivals</a></li>
+            <li><a href="shop.html?sort=discount">Deal Zone</a></li>
           </ul>
         </div>
-        <div class="col-lg-3 col-md-6 footer-col">
-          <h4>CUSTOMER POLICIES</h4>
-          <ul>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">FAQ</a></li>
+
+        <!-- Customer Care -->
+        <div class="col-lg-3 col-6 mb-4 mb-lg-0">
+          <h5 class="footer-col-header">CUSTOMER POLICIES</h5>
+          <ul class="footer-links-list">
+            <li><a href="order-tracking.html">Track Order Status</a></li>
+            <li><a href="cart.html">Shopping Bag & Pricing</a></li>
+            <li><a href="#">Shipping & Returns Policy</a></li>
             <li><a href="#">Terms & Conditions</a></li>
-            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Privacy & Cookie Policy</a></li>
           </ul>
         </div>
-        <div class="col-lg-3 col-md-6 footer-col">
-          <h4>MY ACCOUNT</h4>
-          <ul>
-            <li><a href="#" data-toggle="modal" data-target="#signInModal">Sign In</a></li>
-            <li><a href="#" data-toggle="modal" data-target="#signUpModal">Register</a></li>
-            <li><a href="cart.html">View Bag</a></li>
-            <li><a href="#">Track Order</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-3 col-md-6 footer-col">
-          <h4>GET HELP</h4>
-          <ul>
-            <li><a href="#">Shipping Info</a></li>
-            <li><a href="#">Return Policy</a></li>
-            <li><a href="#">Payment Options</a></li>
-            <li><a href="#">Order Cancellation</a></li>
-          </ul>
+
+        <!-- Contact & Security -->
+        <div class="col-lg-3 col-md-6">
+          <h5 class="footer-col-header">NEED ASSISTANCE?</h5>
+          <p class="small text-muted mb-2"><i class="fas fa-headset mr-2 text-primary"></i> 1800-202-4040 (Mon-Sat, 9AM-8PM)</p>
+          <p class="small text-muted mb-3"><i class="fas fa-envelope mr-2 text-primary"></i> support@stylehub.store</p>
+          <div class="pt-2">
+            <span class="small font-weight-bold text-light d-block mb-2">100% SECURE CHECKOUT</span>
+            <div class="d-flex gap-2 text-muted h4">
+              <i class="fab fa-cc-visa text-white mr-2"></i>
+              <i class="fab fa-cc-mastercard text-warning mr-2"></i>
+              <i class="fab fa-google-pay text-info mr-2"></i>
+              <i class="fas fa-lock text-success"></i>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p class="mb-0">&copy; 2026 StyleHub E-Commerce. All Rights Reserved.</p>
+
+      <div class="footer-bottom-row">
+        <p class="mb-0 text-muted">&copy; 2026 StyleHub Retail Pvt Ltd. All Rights Reserved.</p>
+        <div class="d-flex gap-3">
+          <a href="admin.html" class="text-muted small mr-3"><i class="fas fa-lock mr-1"></i> Admin Portal</a>
+          <a href="#" class="text-muted small">Security Verified</a>
+        </div>
       </div>
     </div>
   </footer>
@@ -438,5 +482,42 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="ecommerce.js"></script>
+
+  <script>
+    // Tab Products Loader
+    function loadTabProducts(tabKey) {
+      const container = document.getElementById('tab-products-grid');
+      if (!container) return;
+      
+      const all = getProducts();
+      let filtered = [];
+
+      if (tabKey === 'featured') {
+        filtered = all.filter(p => p.isFeatured).slice(0, 8);
+      } else if (tabKey === 'trending') {
+        filtered = all.filter(p => p.isTrending).slice(0, 8);
+      } else if (tabKey === 'new') {
+        filtered = all.filter(p => p.isNew).slice(0, 8);
+      } else if (tabKey === 'bestseller') {
+        filtered = all.filter(p => p.isBestSeller).slice(0, 8);
+      } else {
+        filtered = all.slice(0, 8);
+      }
+
+      container.innerHTML = filtered.map(p => renderProductCard(p)).join('');
+      updateWishlistBadges();
+    }
+
+    function handleNewsletter(e) {
+      e.preventDefault();
+      const email = document.getElementById('newsletter-email').value;
+      showToast(`Thank you! ₹300 coupon code sent to ${email}`, 'success');
+      e.target.reset();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadTabProducts('featured');
+    });
+  </script>
 </body>
 </html>

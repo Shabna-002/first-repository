@@ -6,253 +6,176 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shopping Cart | StyleHub</title>
 
-  <!-- Google Fonts & Font Awesome -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Bootstrap 4 CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  
-  <!-- Custom CSS -->
   <link rel="stylesheet" href="ecommerce.css">
 </head>
 <body>
 
-  <!-- Navigation Bar -->
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-      <div class="container">
+  <!-- Top Announcement Bar -->
+  <div class="top-announcement-bar">
+    <span>✨ SPECIAL: FREE SHIPPING ON ALL ORDERS ABOVE ₹999! USE CODE: <span class="coupon-badge">WELCOME10</span></span>
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light px-0">
         <a class="navbar-brand" href="index.html">
-          <i class="fas fa-shopping-bag"></i> Style<span>Hub</span>
+          <div class="brand-icon-box"><i class="fas fa-bag-shopping"></i></div>
+          Style<span>Hub</span>
         </a>
-        
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+
+        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#mainNavbarCollapse">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
-            </li>
+        <div class="collapse navbar-collapse" id="mainNavbarCollapse">
+          <ul class="navbar-nav mr-auto ml-lg-3">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="shop.html">All Products</a></li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Category
-              </a>
-              <div class="dropdown-menu" aria-labelledby="categoryDropdown">
-                <a class="dropdown-item" href="men.html"><i class="fas fa-male mr-2"></i> Men's Collection</a>
-                <a class="dropdown-item" href="women.html"><i class="fas fa-female mr-2"></i> Women's Collection</a>
-                <a class="dropdown-item" href="kids.html"><i class="fas fa-child mr-2"></i> Kids' Collection</a>
+              <a class="nav-link dropdown-toggle" href="#" id="cartCat" role="button" data-toggle="dropdown">Categories</a>
+              <div class="dropdown-menu border-0 shadow-lg">
+                <a class="dropdown-item py-2" href="men.html">Men's Collection</a>
+                <a class="dropdown-item py-2" href="women.html">Women's Collection</a>
+                <a class="dropdown-item py-2" href="kids.html">Kids' Collection</a>
               </div>
             </li>
           </ul>
 
-          <ul class="navbar-nav ml-auto align-items-center" id="nav-auth-links">
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-toggle="modal" data-target="#signInModal">
-                <i class="fas fa-sign-in-alt mr-1"></i> Sign In
+          <div class="search-container-box mx-lg-3 my-2 my-lg-0">
+            <div class="search-input-wrapper">
+              <i class="fas fa-search search-icon"></i>
+              <input type="text" class="global-search-input" placeholder="Search products..." autocomplete="off">
+            </div>
+            <div id="search-dropdown-results"></div>
+          </div>
+
+          <ul class="navbar-nav align-items-center ml-lg-auto">
+            <li class="nav-item mr-2">
+              <a class="nav-action-icon-btn" href="wishlist.html" title="Wishlist">
+                <i class="far fa-heart"></i>
+                <span class="badge-counter-pill wishlist-badge-count" style="display: none;">0</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-toggle="modal" data-target="#signUpModal">
-                <i class="fas fa-user-plus mr-1"></i> Sign Up
+            <li class="nav-item mr-3">
+              <a class="nav-action-icon-btn text-primary" href="cart.html" title="Shopping Cart">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="badge-counter-pill cart-badge-count" style="display: none;">0</span>
               </a>
             </li>
-            <li class="nav-item active">
-              <a class="nav-link btn btn-outline-info text-white ml-lg-2 px-3 py-1" href="cart.html">
-                <i class="fas fa-shopping-cart mr-1"></i> Cart
-                <span class="cart-badge cart-badge-count">0</span>
-              </a>
-            </li>
+            <div id="nav-user-actions" class="d-flex align-items-center">
+              <li class="nav-item">
+                <a class="nav-link font-weight-bold" href="auth.html"><i class="far fa-user-circle mr-1"></i> Sign In</a>
+              </li>
+            </div>
           </ul>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </div>
   </header>
 
-  <main class="cart-container">
-    <h2 class="section-title">Shopping Bag</h2>
+  <main class="container my-4">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb bg-transparent p-0 mb-3 small">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item active text-dark font-weight-bold">Shopping Cart</li>
+      </ol>
+    </nav>
 
-    <!-- Empty Cart View (hidden when cart has items) -->
-    <div id="empty-cart-view" class="empty-cart-box">
-      <img src="images/empty_bag.svg" alt="Empty Bag" style="width: 100px; height: 100px;">
-      <h3>Your bag is empty!</h3>
-      <p>Fill it up with the latest fashion trends and exciting deals now.</p>
-      <a href="index.html" class="btn btn-primary px-4 py-2 font-weight-bold">
-        <i class="fas fa-bag-shopping mr-2"></i> START SHOPPING
+    <!-- Empty Cart Screen -->
+    <div id="empty-cart-view" class="empty-state-card" style="display: none;">
+      <img src="images/empty_bag.svg" alt="Empty Cart" style="width: 110px; height: 110px; opacity: 0.85;" class="mb-3">
+      <h3 class="font-weight-800 text-dark">Your Shopping Bag is Empty</h3>
+      <p class="text-muted small mb-4">Looks like you haven't added anything to your cart yet. Explore our newest fashion arrivals and trending deals!</p>
+      <a href="shop.html" class="btn btn-primary px-4 py-2 font-weight-bold rounded-pill shadow-sm">
+        <i class="fas fa-bag-shopping mr-2"></i> Start Shopping
       </a>
     </div>
 
-    <!-- Filled Cart View (hidden when cart is empty) -->
-    <div id="cart-filled-view" class="row" style="display: none;">
-      <!-- Cart Items List -->
-      <div class="col-lg-8">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-          <h5 class="font-weight-bold mb-0">Cart Items</h5>
-          <a href="index.html" class="small text-primary font-weight-500">
-            <i class="fas fa-plus mr-1"></i> Add More Items
-          </a>
-        </div>
-        <div id="cart-items-container">
-          <!-- Dynamically populated by ecommerce.js -->
+    <!-- Filled Cart Screen -->
+    <div id="cart-filled-view" class="row">
+      <!-- Left: Cart Items List -->
+      <div class="col-lg-8 mb-4">
+        <div class="cart-items-wrapper">
+          <div class="d-flex justify-content-between align-items-center pb-3 border-bottom mb-2">
+            <h5 class="font-weight-bold text-dark mb-0">Bag Items (<span id="cart-items-count-label">0</span>)</h5>
+            <a href="shop.html" class="small font-weight-bold text-primary"><i class="fas fa-plus mr-1"></i> Add More Items</a>
+          </div>
+
+          <div id="cart-items-container">
+            <!-- Dynamically populated -->
+          </div>
         </div>
       </div>
 
-      <!-- Order Summary Sidebar -->
+      <!-- Right: Order Summary Sidebar -->
       <div class="col-lg-4">
-        <div class="order-summary-card">
-          <h5 class="font-weight-bold mb-3 pb-2 border-bottom">Order Summary</h5>
-          
-          <div class="order-summary-row">
-            <span>Subtotal</span>
-            <span id="summary-subtotal" class="font-weight-600">₹0</span>
+        <div class="order-summary-box">
+          <h5>Order Summary</h5>
+
+          <!-- Free Shipping Tracker -->
+          <div class="mb-3 p-2 bg-light rounded-lg">
+            <div class="d-flex justify-content-between small font-weight-bold text-dark mb-1">
+              <span id="shipping-progress-text">Add ₹999 for FREE Delivery</span>
+              <span id="shipping-status-tag" class="text-primary">Standard ₹99</span>
+            </div>
+            <div class="progress" style="height: 6px;">
+              <div class="progress-bar bg-success" id="shipping-progress-bar" style="width: 0%;"></div>
+            </div>
           </div>
 
-          <div class="order-summary-row text-success">
-            <span>Special Discount (10% over ₹1500)</span>
-            <span id="summary-discount" class="font-weight-600">₹0</span>
+          <!-- Coupon Code Input -->
+          <div class="coupon-input-box">
+            <input type="text" class="form-control" id="cart-coupon-input" placeholder="Coupon Code (e.g. STYLE20)">
+            <button class="btn btn-dark font-weight-bold px-3" type="button" onclick="handleApplyCoupon()">Apply</button>
+          </div>
+          <div id="applied-coupon-pill" class="alert alert-success py-2 px-3 small d-flex justify-content-between align-items-center" style="display: none;">
+            <span><i class="fas fa-tag mr-1"></i> Coupon <strong id="active-coupon-code"></strong> applied!</span>
+            <button type="button" class="close p-0" onclick="handleRemoveCoupon()">&times;</button>
           </div>
 
-          <div class="order-summary-row">
-            <span>Shipping Charge</span>
-            <span id="summary-shipping" class="font-weight-600">FREE</span>
+          <!-- Calculations -->
+          <div class="summary-calc-row">
+            <span>Bag Total (MRP)</span>
+            <span id="sum-original-price">₹0</span>
           </div>
-          
-          <div class="small text-muted mb-2">
-            <i class="fas fa-truck text-info mr-1"></i> Free delivery on orders above ₹999
+          <div class="summary-calc-row text-success">
+            <span>Product Discount</span>
+            <span id="sum-product-discount">-₹0</span>
+          </div>
+          <div class="summary-calc-row text-success" id="coupon-discount-row" style="display: none;">
+            <span>Coupon Savings</span>
+            <span id="sum-coupon-discount">-₹0</span>
+          </div>
+          <div class="summary-calc-row">
+            <span>Delivery Fee</span>
+            <span id="sum-delivery">FREE</span>
           </div>
 
-          <div class="order-summary-row total-row">
-            <span>Total Amount</span>
-            <span id="summary-total" class="text-primary font-weight-bold">₹0</span>
+          <div class="summary-total-row">
+            <span>Grand Total</span>
+            <span class="text-primary font-weight-800" id="sum-grand-total">₹0</span>
           </div>
 
-          <button class="btn-checkout" onclick="proceedToCheckout()">
-            <i class="fas fa-credit-card mr-2"></i> PROCEED TO CHECKOUT
-          </button>
+          <a href="checkout.html" class="btn btn-primary btn-block font-weight-bold py-3 mt-4 rounded-xl shadow-lg">
+            Proceed to Checkout <i class="fas fa-arrow-right ml-2"></i>
+          </a>
 
           <div class="text-center mt-3">
-            <span class="small text-muted">
-              <i class="fas fa-lock mr-1 text-success"></i> 256-Bit SSL Secure Checkout
-            </span>
+            <small class="text-muted"><i class="fas fa-shield-alt text-success mr-1"></i> 256-Bit SSL Secure Encryption</small>
           </div>
         </div>
       </div>
     </div>
   </main>
 
-  <!-- Sign In Modal -->
-  <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="signInModalLabel"><i class="fas fa-user-lock mr-2"></i>Sign In to StyleHub</h5>
-          <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form onsubmit="handleSignIn(event)">
-            <div class="form-group">
-              <label for="signInEmail" class="font-weight-500">Email Address</label>
-              <input type="email" class="form-control" id="signInEmail" placeholder="Enter your email" required>
-            </div>
-            <div class="form-group">
-              <label for="signInPassword" class="font-weight-500">Password</label>
-              <input type="password" class="form-control" id="signInPassword" placeholder="Enter password" required>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block font-weight-bold py-2 mt-4">
-              Sign In
-            </button>
-          </form>
-        </div>
-        <div class="modal-footer justify-content-center">
-          <p class="mb-0 text-muted small">Don't have an account? <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#signUpModal">Sign Up</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Sign Up Modal -->
-  <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="signUpModalLabel"><i class="fas fa-user-plus mr-2"></i>Create StyleHub Account</h5>
-          <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form onsubmit="handleSignUp(event)">
-            <div class="form-group">
-              <label for="signUpName" class="font-weight-500">Full Name</label>
-              <input type="text" class="form-control" id="signUpName" placeholder="Enter your full name" required>
-            </div>
-            <div class="form-group">
-              <label for="signUpEmail" class="font-weight-500">Email Address</label>
-              <input type="email" class="form-control" id="signUpEmail" placeholder="Enter your email" required>
-            </div>
-            <div class="form-group">
-              <label for="signUpPassword" class="font-weight-500">Password</label>
-              <input type="password" class="form-control" id="signUpPassword" placeholder="Create password" required>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block font-weight-bold py-2 mt-4">
-              Create Account
-            </button>
-          </form>
-        </div>
-        <div class="modal-footer justify-content-center">
-          <p class="mb-0 text-muted small">Already have an account? <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#signInModal">Sign In</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3 col-md-6 footer-col">
-          <h4>ONLINE SHOPPING</h4>
-          <ul>
-            <li><a href="men.html">Men's Collection</a></li>
-            <li><a href="women.html">Women's Collection</a></li>
-            <li><a href="kids.html">Kids' Collection</a></li>
-            <li><a href="cart.html">My Cart</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-3 col-md-6 footer-col">
-          <h4>CUSTOMER POLICIES</h4>
-          <ul>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Terms & Conditions</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-3 col-md-6 footer-col">
-          <h4>MY ACCOUNT</h4>
-          <ul>
-            <li><a href="#" data-toggle="modal" data-target="#signInModal">Sign In</a></li>
-            <li><a href="#" data-toggle="modal" data-target="#signUpModal">Register</a></li>
-            <li><a href="cart.html">View Bag</a></li>
-            <li><a href="#">Track Order</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-3 col-md-6 footer-col">
-          <h4>GET HELP</h4>
-          <ul>
-            <li><a href="#">Shipping Info</a></li>
-            <li><a href="#">Return Policy</a></li>
-            <li><a href="#">Payment Options</a></li>
-            <li><a href="#">Order Cancellation</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p class="mb-0">&copy; 2026 StyleHub E-Commerce. All Rights Reserved.</p>
-      </div>
+  <footer class="main-footer">
+    <div class="container text-center">
+      <p class="mb-0 text-muted small">&copy; 2026 StyleHub Fashion Retail. All Rights Reserved.</p>
     </div>
   </footer>
 
@@ -261,5 +184,136 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="ecommerce.js"></script>
+
+  <script>
+    function renderCartView() {
+      const cart = getCart();
+      const emptyView = document.getElementById('empty-cart-view');
+      const filledView = document.getElementById('cart-filled-view');
+      const container = document.getElementById('cart-items-container');
+
+      if (cart.length === 0) {
+        emptyView.style.display = 'block';
+        filledView.style.display = 'none';
+        return;
+      }
+
+      emptyView.style.display = 'none';
+      filledView.style.display = 'flex';
+
+      document.getElementById('cart-items-count-label').innerText = cart.reduce((sum, i) => sum + i.quantity, 0);
+
+      container.innerHTML = cart.map(item => `
+        <div class="cart-item-row">
+          <img src="${item.image}" alt="${item.name}" class="cart-item-thumbnail">
+          <div class="cart-item-details">
+            <h6 class="cart-item-title">${item.name}</h6>
+            <div class="cart-item-variant">Size: <strong>${item.size || 'Standard'}</strong> | Color: <strong>${item.color || 'Standard'}</strong></div>
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <span class="font-weight-bold text-dark">₹${item.price.toLocaleString('en-IN')}</span>
+              ${item.originalPrice > item.price ? `<span class="small text-muted text-decoration-line-through">₹${item.originalPrice.toLocaleString('en-IN')}</span>` : ''}
+            </div>
+            <div class="d-flex align-items-center flex-wrap gap-3">
+              <div class="quantity-stepper mr-3">
+                <button type="button" class="qty-btn" onclick="handleQtyChange('${item.cartItemId}', -1)">-</button>
+                <input type="text" class="qty-input" value="${item.quantity}" readonly>
+                <button type="button" class="qty-btn" onclick="handleQtyChange('${item.cartItemId}', 1)">+</button>
+              </div>
+              <button class="btn btn-sm btn-link text-muted p-0 mr-3" onclick="handleMoveToWish('${item.cartItemId}', '${item.id}')">
+                <i class="far fa-heart mr-1"></i> Move to Wishlist
+              </button>
+              <button class="btn btn-sm btn-link text-danger p-0" onclick="handleCartRemove('${item.cartItemId}')">
+                <i class="fas fa-trash-alt mr-1"></i> Remove
+              </button>
+            </div>
+          </div>
+          <div class="text-right d-none d-md-block">
+            <span class="h6 font-weight-bold text-dark">₹${(item.price * item.quantity).toLocaleString('en-IN')}</span>
+          </div>
+        </div>
+      `).join('');
+
+      renderOrderSummary();
+    }
+
+    function renderOrderSummary() {
+      const totals = getCartTotals();
+      document.getElementById('sum-original-price').innerText = `₹${totals.originalSubtotal.toLocaleString('en-IN')}`;
+      document.getElementById('sum-product-discount').innerText = `-₹${totals.productDiscount.toLocaleString('en-IN')}`;
+      document.getElementById('sum-delivery').innerText = totals.shipping === 0 ? 'FREE' : `₹${totals.shipping}`;
+      document.getElementById('sum-grand-total').innerText = `₹${totals.total.toLocaleString('en-IN')}`;
+
+      // Coupon Row
+      const couponRow = document.getElementById('coupon-discount-row');
+      const couponPill = document.getElementById('applied-coupon-pill');
+      if (totals.coupon) {
+        couponRow.style.display = 'flex';
+        document.getElementById('sum-coupon-discount').innerText = `-₹${totals.couponDiscount.toLocaleString('en-IN')}`;
+        couponPill.style.display = 'flex';
+        document.getElementById('active-coupon-code').innerText = totals.coupon.code;
+      } else {
+        couponRow.style.display = 'none';
+        couponPill.style.display = 'none';
+      }
+
+      // Free shipping progress
+      const progressText = document.getElementById('shipping-progress-text');
+      const progressBar = document.getElementById('shipping-progress-bar');
+      const statusTag = document.getElementById('shipping-status-tag');
+
+      if (totals.subtotal >= 999) {
+        progressText.innerHTML = '<i class="fas fa-check-circle text-success mr-1"></i> You unlocked FREE Shipping!';
+        progressBar.style.width = '100%';
+        statusTag.className = 'text-success font-weight-bold';
+        statusTag.innerText = 'FREE';
+      } else {
+        const remaining = 999 - totals.subtotal;
+        progressText.innerText = `Add ₹${remaining} more for FREE Delivery`;
+        progressBar.style.width = `${Math.min(100, Math.round((totals.subtotal / 999) * 100))}%`;
+        statusTag.className = 'text-primary font-weight-bold';
+        statusTag.innerText = '₹99';
+      }
+    }
+
+    function handleQtyChange(cartItemId, delta) {
+      updateCartQuantity(cartItemId, delta);
+      renderCartView();
+    }
+
+    function handleCartRemove(cartItemId) {
+      removeFromCart(cartItemId);
+      renderCartView();
+    }
+
+    function handleMoveToWish(cartItemId, productId) {
+      const product = getProductById(productId);
+      if (product) {
+        toggleWishlist(product);
+        removeFromCart(cartItemId);
+        renderCartView();
+      }
+    }
+
+    function handleApplyCoupon() {
+      const code = document.getElementById('cart-coupon-input').value;
+      const res = applyCouponCode(code);
+      if (res.success) {
+        showToast(res.message, 'success');
+        document.getElementById('cart-coupon-input').value = '';
+        renderOrderSummary();
+      } else {
+        showToast(res.message, 'error');
+      }
+    }
+
+    function handleRemoveCoupon() {
+      removeCouponCode();
+      renderOrderSummary();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCartView();
+    });
+  </script>
 </body>
 </html>

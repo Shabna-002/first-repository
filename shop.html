@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Products & Search | StyleHub Store</title>
+
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="ecommerce.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-announcement-bar">
+    <span>✨ SPECIAL DEALS: USE COUPON <span class="coupon-badge">STYLE20</span> FOR 20% OFF ON ORDERS OVER ₹1,500</span>
+  </div>
+
+  <!-- Main Header & Navigation -->
+  <header class="main-header">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light px-0">
+        <a class="navbar-brand" href="index.html">
+          <div class="brand-icon-box">
+            <i class="fas fa-bag-shopping"></i>
+          </div>
+          Style<span>Hub</span>
+        </a>
+
+        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#mainNavbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbarCollapse">
+          <ul class="navbar-nav mr-auto ml-lg-3">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="shop.html">All Products</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" data-toggle="dropdown">
+                Categories
+              </a>
+              <div class="dropdown-menu border-0 shadow-lg" aria-labelledby="categoriesDropdown">
+                <a class="dropdown-item py-2" href="men.html"><i class="fas fa-male mr-2 text-primary"></i> Men's Collection</a>
+                <a class="dropdown-item py-2" href="women.html"><i class="fas fa-female mr-2 text-danger"></i> Women's Collection</a>
+                <a class="dropdown-item py-2" href="kids.html"><i class="fas fa-child mr-2 text-success"></i> Kids' Collection</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="order-tracking.html">Track Order</a>
+            </li>
+          </ul>
+
+          <div class="search-container-box mx-lg-3 my-2 my-lg-0">
+            <div class="search-input-wrapper">
+              <i class="fas fa-search search-icon"></i>
+              <input type="text" class="global-search-input" id="shop-search-input" placeholder="Search products..." autocomplete="off">
+            </div>
+            <div id="search-dropdown-results"></div>
+          </div>
+
+          <ul class="navbar-nav align-items-center ml-lg-auto" id="nav-actions-group">
+            <li class="nav-item mr-2">
+              <a class="nav-action-icon-btn" href="wishlist.html" title="Wishlist">
+                <i class="far fa-heart"></i>
+                <span class="badge-counter-pill wishlist-badge-count" style="display: none;">0</span>
+              </a>
+            </li>
+            <li class="nav-item mr-3">
+              <a class="nav-action-icon-btn" href="cart.html" title="Shopping Cart">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="badge-counter-pill cart-badge-count" style="display: none;">0</span>
+              </a>
+            </li>
+            <div id="nav-user-actions" class="d-flex align-items-center">
+              <li class="nav-item">
+                <a class="nav-link font-weight-bold" href="auth.html">
+                  <i class="far fa-user-circle mr-1"></i> Sign In
+                </a>
+              </li>
+            </div>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container my-4">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb bg-transparent p-0 mb-3 small">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item active text-dark font-weight-bold" aria-current="page">Catalog Store</li>
+      </ol>
+    </nav>
+
+    <div class="row">
+      <!-- Left Sidebar: Filters -->
+      <div class="col-lg-3 mb-4">
+        <div class="card p-3 p-md-4 border-0 rounded-xl shadow-sm bg-white sticky-top" style="top: 85px;">
+          <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
+            <h5 class="font-weight-800 mb-0 text-dark"><i class="fas fa-sliders-h mr-2 text-primary"></i> Filters</h5>
+            <button class="btn btn-sm btn-link text-muted p-0 font-weight-bold" onclick="resetAllFilters()">Reset All</button>
+          </div>
+
+          <!-- Category Filter -->
+          <div class="mb-4">
+            <label class="font-weight-700 text-dark small text-uppercase d-block mb-2">Category</label>
+            <div class="custom-control custom-radio mb-2">
+              <input type="radio" id="cat-all" name="filterCategory" class="custom-control-input" value="all" checked onchange="applyFilters()">
+              <label class="custom-control-label small" for="cat-all">All Categories</label>
+            </div>
+            <div class="custom-control custom-radio mb-2">
+              <input type="radio" id="cat-men" name="filterCategory" class="custom-control-input" value="Men" onchange="applyFilters()">
+              <label class="custom-control-label small" for="cat-men">Men's Fashion</label>
+            </div>
+            <div class="custom-control custom-radio mb-2">
+              <input type="radio" id="cat-women" name="filterCategory" class="custom-control-input" value="Women" onchange="applyFilters()">
+              <label class="custom-control-label small" for="cat-women">Women's Fashion</label>
+            </div>
+            <div class="custom-control custom-radio mb-2">
+              <input type="radio" id="cat-kids" name="filterCategory" class="custom-control-input" value="Kids" onchange="applyFilters()">
+              <label class="custom-control-label small" for="cat-kids">Kids' Collection</label>
+            </div>
+          </div>
+
+          <!-- Price Range Filter -->
+          <div class="mb-4">
+            <label class="font-weight-700 text-dark small text-uppercase d-block mb-2">Max Price: <span id="price-slider-label" class="text-primary font-weight-bold">₹5,000</span></label>
+            <input type="range" class="custom-range" id="price-range-slider" min="400" max="5000" step="100" value="5000" oninput="updatePriceSlider(this.value)" onchange="applyFilters()">
+            <div class="d-flex justify-content-between text-muted small mt-1">
+              <span>₹400</span>
+              <span>₹5,000</span>
+            </div>
+          </div>
+
+          <!-- Minimum Rating Filter -->
+          <div class="mb-3">
+            <label class="font-weight-700 text-dark small text-uppercase d-block mb-2">Customer Rating</label>
+            <div class="custom-control custom-radio mb-2">
+              <input type="radio" id="rate-all" name="filterRating" class="custom-control-input" value="0" checked onchange="applyFilters()">
+              <label class="custom-control-label small" for="rate-all">All Ratings</label>
+            </div>
+            <div class="custom-control custom-radio mb-2">
+              <input type="radio" id="rate-4" name="filterRating" class="custom-control-input" value="4.5" onchange="applyFilters()">
+              <label class="custom-control-label small text-warning" for="rate-4">
+                <i class="fas fa-star"></i> 4.5 & Above
+              </label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="rate-3" name="filterRating" class="custom-control-input" value="4.0" onchange="applyFilters()">
+              <label class="custom-control-label small text-warning" for="rate-3">
+                <i class="fas fa-star"></i> 4.0 & Above
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Products & Sort Bar -->
+      <div class="col-lg-9">
+        <!-- Top Toolbar -->
+        <div class="card p-3 mb-4 border-0 rounded-xl shadow-sm bg-white d-flex flex-row justify-content-between align-items-center flex-wrap gap-2">
+          <div>
+            <span class="text-dark font-weight-bold" id="results-count-text">Showing 18 products</span>
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            <label class="small text-muted font-weight-600 mb-0 mr-2">Sort By:</label>
+            <select class="custom-select custom-select-sm border-0 bg-light font-weight-600" id="sort-select" style="width: 190px;" onchange="applyFilters()">
+              <option value="featured" selected>Featured</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="rating">Highest Rated</option>
+              <option value="discount">Biggest Discounts</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Products Grid Container -->
+        <div class="row" id="shop-products-grid">
+          <!-- Dynamically populated -->
+        </div>
+
+        <!-- Empty State (if no filters match) -->
+        <div id="shop-empty-state" class="empty-state-card" style="display: none;">
+          <div class="empty-state-icon"><i class="fas fa-search-minus"></i></div>
+          <h4 class="font-weight-bold">No Products Found</h4>
+          <p class="text-muted small">We couldn't find any products matching your selected filters or search query.</p>
+          <button class="btn btn-primary font-weight-bold px-4 py-2 rounded-pill mt-2" onclick="resetAllFilters()">Reset Filters</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container text-center">
+      <p class="mb-0 text-muted small">&copy; 2026 StyleHub Fashion Store. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="ecommerce.js"></script>
+
+  <script>
+    function updatePriceSlider(val) {
+      document.getElementById('price-slider-label').innerText = '₹' + Number(val).toLocaleString('en-IN');
+    }
+
+    function resetAllFilters() {
+      document.getElementById('cat-all').checked = true;
+      document.getElementById('rate-all').checked = true;
+      document.getElementById('price-range-slider').value = 5000;
+      updatePriceSlider(5000);
+      document.getElementById('shop-search-input').value = '';
+      document.getElementById('sort-select').value = 'featured';
+      applyFilters();
+    }
+
+    function applyFilters() {
+      const all = getProducts();
+      const selectedCategory = document.querySelector('input[name="filterCategory"]:checked').value;
+      const maxPrice = Number(document.getElementById('price-range-slider').value);
+      const minRating = Number(document.querySelector('input[name="filterRating"]:checked').value);
+      const searchKeyword = (document.getElementById('shop-search-input').value || '').trim().toLowerCase();
+      const sortBy = document.getElementById('sort-select').value;
+
+      let filtered = all.filter(p => {
+        const matchCategory = selectedCategory === 'all' || p.category === selectedCategory;
+        const matchPrice = p.price <= maxPrice;
+        const matchRating = (p.rating || 0) >= minRating;
+        const matchSearch = !searchKeyword || 
+          p.name.toLowerCase().includes(searchKeyword) ||
+          p.category.toLowerCase().includes(searchKeyword) ||
+          (p.subCategory && p.subCategory.toLowerCase().includes(searchKeyword));
+
+        return matchCategory && matchPrice && matchRating && matchSearch;
+      });
+
+      // Sort
+      if (sortBy === 'price-low') {
+        filtered.sort((a, b) => a.price - b.price);
+      } else if (sortBy === 'price-high') {
+        filtered.sort((a, b) => b.price - a.price);
+      } else if (sortBy === 'rating') {
+        filtered.sort((a, b) => (b.rating || 0) - (a.rating || 0));
+      } else if (sortBy === 'discount') {
+        filtered.sort((a, b) => (b.discount || 0) - (a.discount || 0));
+      }
+
+      const grid = document.getElementById('shop-products-grid');
+      const emptyState = document.getElementById('shop-empty-state');
+      const countText = document.getElementById('results-count-text');
+
+      countText.innerText = `Showing ${filtered.length} products`;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        emptyState.style.display = 'block';
+      } else {
+        emptyState.style.display = 'none';
+        grid.innerHTML = filtered.map(p => renderProductCard(p)).join('');
+        updateWishlistBadges();
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Check URL query parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const categoryParam = urlParams.get('category');
+      const queryParam = urlParams.get('q');
+      const sortParam = urlParams.get('sort');
+
+      if (categoryParam) {
+        const catRadio = document.querySelector(`input[name="filterCategory"][value="${categoryParam}"]`);
+        if (catRadio) catRadio.checked = true;
+      }
+
+      if (queryParam) {
+        document.getElementById('shop-search-input').value = queryParam;
+      }
+
+      if (sortParam) {
+        document.getElementById('sort-select').value = sortParam;
+      }
+
+      applyFilters();
+
+      // Listen to shop search input
+      document.getElementById('shop-search-input').addEventListener('input', applyFilters);
+    });
+  </script>
+</body>
+</html>

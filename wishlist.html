@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Wishlist | StyleHub</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="ecommerce.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light px-0">
+        <a class="navbar-brand" href="index.html">
+          <div class="brand-icon-box"><i class="fas fa-bag-shopping"></i></div>
+          Style<span>Hub</span>
+        </a>
+
+        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#mainNavbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbarCollapse">
+          <ul class="navbar-nav mr-auto ml-lg-3">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="shop.html">All Products</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="wishCat" role="button" data-toggle="dropdown">Categories</a>
+              <div class="dropdown-menu border-0 shadow-lg">
+                <a class="dropdown-item py-2" href="men.html">Men's Collection</a>
+                <a class="dropdown-item py-2" href="women.html">Women's Collection</a>
+                <a class="dropdown-item py-2" href="kids.html">Kids' Collection</a>
+              </div>
+            </li>
+          </ul>
+
+          <div class="search-container-box mx-lg-3 my-2 my-lg-0">
+            <div class="search-input-wrapper">
+              <i class="fas fa-search search-icon"></i>
+              <input type="text" class="global-search-input" placeholder="Search saved items..." autocomplete="off">
+            </div>
+            <div id="search-dropdown-results"></div>
+          </div>
+
+          <ul class="navbar-nav align-items-center ml-lg-auto">
+            <li class="nav-item mr-2">
+              <a class="nav-action-icon-btn text-danger" href="wishlist.html" title="Wishlist">
+                <i class="fas fa-heart"></i>
+                <span class="badge-counter-pill wishlist-badge-count" style="display: none;">0</span>
+              </a>
+            </li>
+            <li class="nav-item mr-3">
+              <a class="nav-action-icon-btn" href="cart.html" title="Shopping Cart">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="badge-counter-pill cart-badge-count" style="display: none;">0</span>
+              </a>
+            </li>
+            <div id="nav-user-actions" class="d-flex align-items-center">
+              <li class="nav-item">
+                <a class="nav-link font-weight-bold" href="auth.html"><i class="far fa-user-circle mr-1"></i> Sign In</a>
+              </li>
+            </div>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container my-4">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb bg-transparent p-0 mb-3 small">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item active text-dark font-weight-bold">My Wishlist</li>
+      </ol>
+    </nav>
+
+    <div class="section-header-row mb-4">
+      <div>
+        <h2 class="section-main-heading">My Wishlist (<span id="wishlist-total-count">0</span>)</h2>
+        <p class="section-subheading">Save your favorite looks and move them to bag anytime</p>
+      </div>
+      <div>
+        <a href="shop.html" class="btn btn-outline-primary btn-sm rounded-pill font-weight-bold px-3">
+          <i class="fas fa-plus mr-1"></i> Explore More Styles
+        </a>
+      </div>
+    </div>
+
+    <!-- Empty Wishlist View -->
+    <div id="empty-wishlist-view" class="empty-state-card" style="display: none;">
+      <div class="empty-state-icon text-danger"><i class="far fa-heart"></i></div>
+      <h3 class="font-weight-800 text-dark">Your Wishlist is Empty</h3>
+      <p class="text-muted small mb-4">You haven't saved any items yet. Heart items while browsing to create your dream wardrobe.</p>
+      <a href="shop.html" class="btn btn-primary px-4 py-2 font-weight-bold rounded-pill shadow-sm">
+        Explore Collections
+      </a>
+    </div>
+
+    <!-- Wishlist Products Grid -->
+    <div class="row" id="wishlist-products-grid">
+      <!-- Populated dynamically -->
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container text-center">
+      <p class="mb-0 text-muted small">&copy; 2026 StyleHub Retail Pvt Ltd. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="ecommerce.js"></script>
+
+  <script>
+    function renderWishlistView() {
+      const list = getWishlist();
+      const emptyView = document.getElementById('empty-wishlist-view');
+      const grid = document.getElementById('wishlist-products-grid');
+      const countEl = document.getElementById('wishlist-total-count');
+
+      countEl.innerText = list.length;
+
+      if (list.length === 0) {
+        emptyView.style.display = 'block';
+        grid.innerHTML = '';
+        return;
+      }
+
+      emptyView.style.display = 'none';
+
+      grid.innerHTML = list.map(item => `
+        <div class="col-xl-3 col-lg-4 col-md-6 col-6 mb-4">
+          <div class="modern-product-card h-100">
+            <div class="card-media-wrapper">
+              <button class="btn-wishlist-toggle active" onclick="handleRemoveWishlist('${item.id}')" title="Remove from Wishlist">
+                <i class="fas fa-trash-alt text-danger"></i>
+              </button>
+              <a href="product-detail.html?id=${item.id}" class="product-media-link">
+                <img src="${item.image}" alt="${item.name}" class="product-card-img" onerror="this.src='images/banner1.jpg'">
+              </a>
+            </div>
+            <div class="card-content-area">
+              <span class="product-subcat">${item.category || 'Fashion'}</span>
+              <h6 class="product-headline mt-1">
+                <a href="product-detail.html?id=${item.id}">${item.name}</a>
+              </h6>
+              <div class="product-price-row">
+                <span class="current-price">₹${item.price.toLocaleString('en-IN')}</span>
+                ${item.originalPrice > item.price ? `<span class="strikethrough-price">₹${item.originalPrice.toLocaleString('en-IN')}</span>` : ''}
+              </div>
+              <button class="btn btn-primary btn-sm btn-block font-weight-bold rounded-lg py-2 mt-auto" onclick="handleMoveToCart('${item.id}')">
+                <i class="fas fa-shopping-bag mr-1"></i> Move to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function handleRemoveWishlist(productId) {
+      let list = getWishlist();
+      list = list.filter(item => item.id !== productId);
+      saveWishlist(list);
+      showToast('Removed from wishlist', 'info');
+      renderWishlistView();
+    }
+
+    function handleMoveToCart(productId) {
+      const product = getProductById(productId);
+      if (product) {
+        addToCart(product);
+        handleRemoveWishlist(productId);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderWishlistView();
+    });
+  </script>
+</body>
+</html>

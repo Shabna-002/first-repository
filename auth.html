@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In & Register | StyleHub</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="ecommerce.css">
+</head>
+<body style="background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%); min-height: 100vh;">
+
+  <!-- Header Mini -->
+  <header class="py-3">
+    <div class="container text-center">
+      <a class="navbar-brand text-white font-weight-800 h3 m-0" href="index.html">
+        <div class="brand-icon-box d-inline-flex mr-2"><i class="fas fa-bag-shopping"></i></div>
+        Style<span class="text-primary">Hub</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="container my-auto py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-5 col-md-8">
+        <!-- Auth Card -->
+        <div class="card border-0 rounded-2xl shadow-2xl overflow-hidden bg-white">
+          <!-- Card Header Tabs -->
+          <div class="bg-light p-2 border-bottom d-flex text-center">
+            <button type="button" class="btn flex-grow-1 font-weight-bold py-2 rounded-lg" id="tab-btn-login" onclick="switchAuthTab('login')">
+              Sign In
+            </button>
+            <button type="button" class="btn flex-grow-1 font-weight-bold py-2 rounded-lg text-muted" id="tab-btn-register" onclick="switchAuthTab('register')">
+              Create Account
+            </button>
+          </div>
+
+          <div class="card-body p-4 p-md-5">
+            <!-- LOGIN PANEL -->
+            <div id="auth-panel-login">
+              <h4 class="font-weight-800 text-dark mb-1">Welcome Back!</h4>
+              <p class="text-muted small mb-4">Sign in to access your orders, wishlist, and exclusive discounts.</p>
+
+              <form onsubmit="handleLoginSubmit(event)">
+                <div class="form-group mb-3">
+                  <label class="font-weight-600 small text-dark">Email Address</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text bg-light border-right-0"><i class="far fa-envelope text-muted"></i></span>
+                    </div>
+                    <input type="email" id="login-email" class="form-control border-left-0" placeholder="name@domain.com" required value="shabna@stylehub.store">
+                  </div>
+                </div>
+
+                <div class="form-group mb-3">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <label class="font-weight-600 small text-dark mb-0">Password</label>
+                    <a href="#" class="small text-primary font-weight-600" data-toggle="modal" data-target="#forgotPassModal">Forgot?</a>
+                  </div>
+                  <div class="input-group mt-1">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text bg-light border-right-0"><i class="fas fa-lock text-muted"></i></span>
+                    </div>
+                    <input type="password" id="login-pass" class="form-control border-left-0 border-right-0" placeholder="Enter password" required value="password123">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-light border text-muted" type="button" onclick="togglePassVisibility('login-pass', this)">
+                        <i class="far fa-eye"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="custom-control custom-checkbox mb-4">
+                  <input type="checkbox" class="custom-control-input" id="rememberMe" checked>
+                  <label class="custom-control-label small text-muted" for="rememberMe">Remember me on this device</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block font-weight-bold py-2 rounded-pill shadow-sm mb-3">
+                  Sign In <i class="fas fa-arrow-right ml-1"></i>
+                </button>
+              </form>
+
+              <div class="text-center my-3 position-relative">
+                <hr>
+                <span class="bg-white px-3 text-muted small position-absolute" style="top: -12px; left: 50%; transform: translateX(-50%);">or continue with</span>
+              </div>
+
+              <!-- Social Login UI -->
+              <div class="row pt-2">
+                <div class="col-4">
+                  <button type="button" class="btn btn-light btn-block font-weight-bold border" onclick="handleSocialAuth('Google')">
+                    <i class="fab fa-google text-danger"></i>
+                  </button>
+                </div>
+                <div class="col-4">
+                  <button type="button" class="btn btn-light btn-block font-weight-bold border" onclick="handleSocialAuth('Apple')">
+                    <i class="fab fa-apple text-dark"></i>
+                  </button>
+                </div>
+                <div class="col-4">
+                  <button type="button" class="btn btn-light btn-block font-weight-bold border" onclick="handleSocialAuth('Facebook')">
+                    <i class="fab fa-facebook-f text-primary"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- REGISTER PANEL -->
+            <div id="auth-panel-register" style="display: none;">
+              <h4 class="font-weight-800 text-dark mb-1">Create Account</h4>
+              <p class="text-muted small mb-4">Join StyleHub for express checkout and exclusive deals.</p>
+
+              <form onsubmit="handleRegisterSubmit(event)">
+                <div class="form-group mb-3">
+                  <label class="font-weight-600 small text-dark">Full Name *</label>
+                  <input type="text" id="reg-name" class="form-control" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group mb-3">
+                  <label class="font-weight-600 small text-dark">Email Address *</label>
+                  <input type="email" id="reg-email" class="form-control" placeholder="name@domain.com" required>
+                </div>
+
+                <div class="form-group mb-4">
+                  <label class="font-weight-600 small text-dark">Create Password *</label>
+                  <div class="input-group">
+                    <input type="password" id="reg-pass" class="form-control border-right-0" placeholder="Minimum 6 characters" required minlength="6">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-light border text-muted" type="button" onclick="togglePassVisibility('reg-pass', this)">
+                        <i class="far fa-eye"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block font-weight-bold py-2 rounded-pill shadow-sm mb-3">
+                  Create Account <i class="fas fa-check ml-1"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-4">
+          <a href="index.html" class="text-light small font-weight-bold"><i class="fas fa-arrow-left mr-1"></i> Return to Storefront</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Forgot Password Modal -->
+  <div class="modal fade" id="forgotPassModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content border-0 rounded-xl">
+        <div class="modal-header bg-dark text-white">
+          <h5 class="modal-title font-weight-bold"><i class="fas fa-key mr-2"></i> Reset Password</h5>
+          <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body p-4">
+          <p class="text-muted small mb-3">Enter your registered email address. We will send a secure password reset link to your inbox.</p>
+          <div class="form-group">
+            <input type="email" id="reset-email-input" class="form-control" placeholder="name@domain.com" required>
+          </div>
+          <button type="button" class="btn btn-primary btn-block font-weight-bold py-2 rounded-pill" onclick="handlePasswordReset()">
+            Send Reset Link
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="ecommerce.js"></script>
+
+  <script>
+    function switchAuthTab(mode) {
+      const loginPanel = document.getElementById('auth-panel-login');
+      const regPanel = document.getElementById('auth-panel-register');
+      const btnLogin = document.getElementById('tab-btn-login');
+      const btnReg = document.getElementById('tab-btn-register');
+
+      if (mode === 'login') {
+        loginPanel.style.display = 'block';
+        regPanel.style.display = 'none';
+        btnLogin.className = 'btn flex-grow-1 font-weight-bold py-2 rounded-lg btn-white shadow-sm';
+        btnReg.className = 'btn flex-grow-1 font-weight-bold py-2 rounded-lg text-muted';
+      } else {
+        loginPanel.style.display = 'none';
+        regPanel.style.display = 'block';
+        btnReg.className = 'btn flex-grow-1 font-weight-bold py-2 rounded-lg btn-white shadow-sm';
+        btnLogin.className = 'btn flex-grow-1 font-weight-bold py-2 rounded-lg text-muted';
+      }
+    }
+
+    function togglePassVisibility(inputId, btn) {
+      const input = document.getElementById(inputId);
+      const icon = btn.querySelector('i');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.className = 'far fa-eye-slash';
+      } else {
+        input.type = 'password';
+        icon.className = 'far fa-eye';
+      }
+    }
+
+    function handleLoginSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('login-email').value;
+      const pass = document.getElementById('login-pass').value;
+      const res = loginUser(email, pass);
+      if (res.success) {
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 500);
+      }
+    }
+
+    function handleRegisterSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('reg-name').value;
+      const email = document.getElementById('reg-email').value;
+      const pass = document.getElementById('reg-pass').value;
+      const res = registerUser(name, email, pass);
+      if (res.success) {
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 500);
+      }
+    }
+
+    function handleSocialAuth(provider) {
+      loginUser(`user_${provider.toLowerCase()}@stylehub.store`, 'socialpass');
+      showToast(`Logged in successfully via ${provider}!`, 'success');
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 500);
+    }
+
+    function handlePasswordReset() {
+      const email = document.getElementById('reset-email-input').value;
+      if (!email) {
+        alert('Please enter your email.');
+        return;
+      }
+      $('#forgotPassModal').modal('hide');
+      showToast(`Password reset link sent to ${email}`, 'info');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      switchAuthTab('login');
+    });
+  </script>
+</body>
+</html>

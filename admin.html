@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard & Management | StyleHub</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="ecommerce.css">
+</head>
+<body class="bg-light">
+
+  <!-- Admin Top Navbar -->
+  <header class="bg-dark text-white py-2 px-3 border-bottom shadow-sm">
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center">
+        <a class="navbar-brand text-white font-weight-800 m-0 mr-4" href="index.html">
+          <div class="brand-icon-box d-inline-flex mr-2" style="width: 30px; height: 30px; font-size: 0.9rem;"><i class="fas fa-bag-shopping"></i></div>
+          Style<span>Hub</span> <span class="badge badge-primary font-weight-bold ml-1 small">Admin</span>
+        </a>
+      </div>
+      <div class="d-flex align-items-center gap-3">
+        <a href="index.html" class="btn btn-outline-light btn-sm rounded-pill font-weight-bold mr-2"><i class="fas fa-store mr-1"></i> Live Store</a>
+        <div class="user-avatar-circle" style="background: #4f46e5;">A</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container-fluid my-4 px-lg-5">
+    <div class="row">
+      <!-- Admin Sidebar Navigation -->
+      <div class="col-lg-2 mb-4">
+        <div class="card p-3 border-0 rounded-xl shadow-sm bg-white">
+          <div class="nav flex-column" role="tablist">
+            <a class="dashboard-nav-item active rounded-lg mb-1" data-toggle="pill" href="#adm-overview">
+              <i class="fas fa-chart-pie mr-2 text-primary"></i> Overview
+            </a>
+            <a class="dashboard-nav-item rounded-lg mb-1" data-toggle="pill" href="#adm-products">
+              <i class="fas fa-boxes-stacked mr-2 text-info"></i> Products
+            </a>
+            <a class="dashboard-nav-item rounded-lg mb-1" data-toggle="pill" href="#adm-orders">
+              <i class="fas fa-shopping-cart mr-2 text-warning"></i> Orders
+            </a>
+            <a class="dashboard-nav-item rounded-lg text-danger" href="index.html">
+              <i class="fas fa-sign-out-alt mr-2"></i> Exit Panel
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Admin Content Area -->
+      <div class="col-lg-10">
+        <div class="tab-content">
+          <!-- TAB 1: OVERVIEW METRICS -->
+          <div class="tab-pane fade show active" id="adm-overview">
+            <!-- 4 Metric KPI Cards -->
+            <div class="row mb-4">
+              <div class="col-xl-3 col-sm-6 mb-3">
+                <div class="metric-kpi-card">
+                  <div>
+                    <span class="small font-weight-bold text-muted text-uppercase">Total Revenue</span>
+                    <h3 class="font-weight-800 text-dark mb-0 mt-1" id="kpi-revenue">₹1,84,520</h3>
+                    <small class="text-success"><i class="fas fa-arrow-up mr-1"></i> +14.2% this month</small>
+                  </div>
+                  <div class="metric-kpi-icon bg-light text-primary"><i class="fas fa-indian-rupee-sign"></i></div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-sm-6 mb-3">
+                <div class="metric-kpi-card">
+                  <div>
+                    <span class="small font-weight-bold text-muted text-uppercase">Total Orders</span>
+                    <h3 class="font-weight-800 text-dark mb-0 mt-1" id="kpi-orders">142</h3>
+                    <small class="text-success"><i class="fas fa-arrow-up mr-1"></i> 8 pending shipment</small>
+                  </div>
+                  <div class="metric-kpi-icon bg-light text-warning"><i class="fas fa-bag-shopping"></i></div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-sm-6 mb-3">
+                <div class="metric-kpi-card">
+                  <div>
+                    <span class="small font-weight-bold text-muted text-uppercase">Active Products</span>
+                    <h3 class="font-weight-800 text-dark mb-0 mt-1" id="kpi-products">18</h3>
+                    <small class="text-info"><i class="fas fa-check mr-1"></i> In Stock</small>
+                  </div>
+                  <div class="metric-kpi-icon bg-light text-info"><i class="fas fa-tags"></i></div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-sm-6 mb-3">
+                <div class="metric-kpi-card">
+                  <div>
+                    <span class="small font-weight-bold text-muted text-uppercase">Registered Users</span>
+                    <h3 class="font-weight-800 text-dark mb-0 mt-1" id="kpi-users">1,240</h3>
+                    <small class="text-success"><i class="fas fa-user-plus mr-1"></i> +28 today</small>
+                  </div>
+                  <div class="metric-kpi-icon bg-light text-success"><i class="fas fa-users"></i></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Visual Sales Bar Simulation -->
+            <div class="card p-4 border-0 rounded-xl shadow-sm bg-white mb-4">
+              <h5 class="font-weight-800 text-dark mb-3"><i class="fas fa-chart-simple mr-2 text-primary"></i> Monthly Sales Trend (2026)</h5>
+              <div class="d-flex align-items-end justify-content-between pt-4 pb-2 border-bottom" style="height: 180px;">
+                <div class="text-center" style="width: 12%;">
+                  <div class="bg-primary rounded-top" style="height: 90px;"></div>
+                  <small class="text-muted d-block mt-2 font-weight-bold">May</small>
+                </div>
+                <div class="text-center" style="width: 12%;">
+                  <div class="bg-primary rounded-top" style="height: 110px;"></div>
+                  <small class="text-muted d-block mt-2 font-weight-bold">Jun</small>
+                </div>
+                <div class="text-center" style="width: 12%;">
+                  <div class="bg-primary rounded-top" style="height: 80px;"></div>
+                  <small class="text-muted d-block mt-2 font-weight-bold">Jul</small>
+                </div>
+                <div class="text-center" style="width: 12%;">
+                  <div class="bg-primary rounded-top" style="height: 130px;"></div>
+                  <small class="text-muted d-block mt-2 font-weight-bold">Aug</small>
+                </div>
+                <div class="text-center" style="width: 12%;">
+                  <div class="bg-primary rounded-top" style="height: 160px; background: linear-gradient(180deg, #2563eb, #4f46e5);"></div>
+                  <small class="text-dark d-block mt-2 font-weight-bold">Sep (Peak)</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: PRODUCT MANAGEMENT -->
+          <div class="tab-pane fade" id="adm-products">
+            <div class="card p-4 border-0 rounded-xl shadow-sm bg-white">
+              <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+                <div>
+                  <h5 class="font-weight-800 text-dark mb-0">Inventory Products</h5>
+                  <small class="text-muted">Manage catalog, add new products, edit pricing or delete items</small>
+                </div>
+                <div>
+                  <button class="btn btn-primary font-weight-bold px-3 py-2 rounded-pill shadow-sm" data-toggle="modal" data-target="#addProductModal">
+                    <i class="fas fa-plus mr-1"></i> Add New Product
+                  </button>
+                </div>
+              </div>
+
+              <!-- Products Table -->
+              <div class="table-responsive">
+                <table class="table table-hover align-middle small mb-0">
+                  <thead class="bg-light font-weight-bold">
+                    <tr>
+                      <th>Image</th>
+                      <th>Product Title</th>
+                      <th>Category</th>
+                      <th>Price</th>
+                      <th>Stock</th>
+                      <th>Rating</th>
+                      <th class="text-right">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-products-table-body">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 3: ORDER MANAGEMENT -->
+          <div class="tab-pane fade" id="adm-orders">
+            <div class="card p-4 border-0 rounded-xl shadow-sm bg-white">
+              <h5 class="font-weight-800 text-dark mb-3">Customer Orders</h5>
+              <div class="table-responsive">
+                <table class="table table-hover align-middle small mb-0">
+                  <thead class="bg-light font-weight-bold">
+                    <tr>
+                      <th>Order ID</th>
+                      <th>Date</th>
+                      <th>Customer</th>
+                      <th>Amount</th>
+                      <th>Payment</th>
+                      <th>Status</th>
+                      <th class="text-right">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-orders-table-body">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Product Modal -->
+  <div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content border-0 rounded-xl">
+        <div class="modal-header bg-dark text-white">
+          <h5 class="modal-title font-weight-bold"><i class="fas fa-box mr-2"></i> Add New Product to Store</h5>
+          <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body p-4">
+          <form onsubmit="handleAdminAddProduct(event)">
+            <div class="row">
+              <div class="col-md-8 mb-3">
+                <label class="font-weight-600 small">Product Title *</label>
+                <input type="text" id="adm-prod-name" class="form-control" required placeholder="e.g. Men Cotton Casual Blazer">
+              </div>
+              <div class="col-md-4 mb-3">
+                <label class="font-weight-600 small">Category *</label>
+                <select id="adm-prod-category" class="custom-select" required>
+                  <option value="Men" selected>Men</option>
+                  <option value="Women">Women</option>
+                  <option value="Kids">Kids</option>
+                </select>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label class="font-weight-600 small">Price (₹) *</label>
+                <input type="number" id="adm-prod-price" class="form-control" required placeholder="1499">
+              </div>
+              <div class="col-md-4 mb-3">
+                <label class="font-weight-600 small">Original Price (₹) *</label>
+                <input type="number" id="adm-prod-origprice" class="form-control" required placeholder="2999">
+              </div>
+              <div class="col-md-4 mb-3">
+                <label class="font-weight-600 small">Stock Quantity *</label>
+                <input type="number" id="adm-prod-stock" class="form-control" value="25" required>
+              </div>
+              <div class="col-12 mb-3">
+                <label class="font-weight-600 small">Image Path / URL *</label>
+                <input type="text" id="adm-prod-img" class="form-control" value="images/men1.jpg" required>
+              </div>
+              <div class="col-12 mb-3">
+                <label class="font-weight-600 small">Short Description</label>
+                <textarea id="adm-prod-desc" class="form-control" rows="2" placeholder="Product details..."></textarea>
+              </div>
+            </div>
+            <div class="text-right mt-3">
+              <button type="button" class="btn btn-secondary rounded-pill px-4" data-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-primary rounded-pill font-weight-bold px-4 ml-2">Add Product</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="ecommerce.js"></script>
+
+  <script>
+    function loadAdminData() {
+      const products = getProducts();
+      const orders = getOrders();
+
+      // KPI counts
+      document.getElementById('kpi-products').innerText = products.length;
+      document.getElementById('kpi-orders').innerText = orders.length;
+
+      // Products Table
+      const prodBody = document.getElementById('admin-products-table-body');
+      prodBody.innerHTML = products.map(p => `
+        <tr>
+          <td><img src="${p.image}" class="rounded" style="width: 38px; height: 38px; object-fit: cover;"></td>
+          <td class="font-weight-bold text-dark">${p.name}</td>
+          <td><span class="badge badge-light">${p.category}</span></td>
+          <td class="font-weight-bold">₹${p.price.toLocaleString('en-IN')}</td>
+          <td><span class="badge badge-success font-weight-bold">${p.stockCount || 20} in stock</span></td>
+          <td><i class="fas fa-star text-warning"></i> ${p.rating || 4.5}</td>
+          <td class="text-right">
+            <button class="btn btn-sm btn-outline-danger" onclick="handleAdminDeleteProduct('${p.id}')">
+              <i class="fas fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      `).join('');
+
+      // Orders Table
+      const orderBody = document.getElementById('admin-orders-table-body');
+      orderBody.innerHTML = orders.map(o => `
+        <tr>
+          <td class="font-weight-bold">${o.id}</td>
+          <td class="text-muted">${o.date}</td>
+          <td>${(o.shippingAddress && o.shippingAddress.name) || 'Shabna M'}</td>
+          <td class="font-weight-bold text-primary">₹${o.total.toLocaleString('en-IN')}</td>
+          <td>${o.paymentMethod}</td>
+          <td>
+            <span class="badge ${o.status === 'Delivered' ? 'badge-success' : 'badge-warning'} font-weight-bold px-2 py-1 rounded-pill">
+              ${o.status}
+            </span>
+          </td>
+          <td class="text-right">
+            <button class="btn btn-sm btn-outline-primary" onclick="toggleOrderStatus('${o.id}')">
+              Update Status
+            </button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function handleAdminAddProduct(e) {
+      e.preventDefault();
+      const products = getProducts();
+      const newP = {
+        id: 'p_' + Date.now().toString(36),
+        name: document.getElementById('adm-prod-name').value.trim(),
+        category: document.getElementById('adm-prod-category').value,
+        subCategory: 'Apparel',
+        price: Number(document.getElementById('adm-prod-price').value),
+        originalPrice: Number(document.getElementById('adm-prod-origprice').value),
+        stockCount: Number(document.getElementById('adm-prod-stock').value),
+        image: document.getElementById('adm-prod-img').value.trim() || 'images/men1.jpg',
+        description: document.getElementById('adm-prod-desc').value.trim() || 'Premium fashion item',
+        rating: 4.8,
+        reviewsCount: 1,
+        inStock: true
+      };
+      products.unshift(newP);
+      saveProducts(products);
+      $('#addProductModal').modal('hide');
+      showToast('Product added successfully!', 'success');
+      loadAdminData();
+    }
+
+    function handleAdminDeleteProduct(id) {
+      if (confirm('Delete this product from catalog?')) {
+        let products = getProducts();
+        products = products.filter(p => p.id !== id);
+        saveProducts(products);
+        showToast('Product deleted', 'info');
+        loadAdminData();
+      }
+    }
+
+    function toggleOrderStatus(orderId) {
+      const orders = getOrders();
+      const o = orders.find(ord => ord.id === orderId);
+      if (o) {
+        o.status = o.status === 'Delivered' ? 'Processing' : 'Delivered';
+        localStorage.setItem(STORAGE_KEYS.ORDERS, JSON.stringify(orders));
+        showToast(`Order ${orderId} marked as ${o.status}!`, 'success');
+        loadAdminData();
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadAdminData();
+    });
+  </script>
+</body>
+</html>

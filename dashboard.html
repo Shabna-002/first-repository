@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Dashboard | StyleHub</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="ecommerce.css">
+</head>
+<body class="bg-light">
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light px-0">
+        <a class="navbar-brand" href="index.html">
+          <div class="brand-icon-box"><i class="fas fa-bag-shopping"></i></div>
+          Style<span>Hub</span>
+        </a>
+
+        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#mainNavbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbarCollapse">
+          <ul class="navbar-nav mr-auto ml-lg-3">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="shop.html">All Products</a></li>
+            <li class="nav-item"><a class="nav-link" href="order-tracking.html">Track Order</a></li>
+          </ul>
+
+          <ul class="navbar-nav align-items-center ml-lg-auto">
+            <li class="nav-item mr-2">
+              <a class="nav-action-icon-btn" href="wishlist.html" title="Wishlist">
+                <i class="far fa-heart"></i>
+                <span class="badge-counter-pill wishlist-badge-count" style="display: none;">0</span>
+              </a>
+            </li>
+            <li class="nav-item mr-3">
+              <a class="nav-action-icon-btn" href="cart.html" title="Shopping Cart">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="badge-counter-pill cart-badge-count" style="display: none;">0</span>
+              </a>
+            </li>
+            <div id="nav-user-actions" class="d-flex align-items-center"></div>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container my-5">
+    <div class="row">
+      <!-- Left: Dashboard Navigation Sidebar -->
+      <div class="col-lg-3 mb-4">
+        <div class="dashboard-sidebar-card">
+          <div class="dashboard-user-brief">
+            <div class="user-avatar-circle mx-auto mb-2" style="width: 58px; height: 58px; font-size: 1.4rem;" id="dash-avatar">U</div>
+            <h5 class="font-weight-bold mb-0" id="dash-user-name">User Account</h5>
+            <small class="text-light opacity-75" id="dash-user-email">user@domain.com</small>
+          </div>
+          <div class="nav flex-column" role="tablist">
+            <a class="dashboard-nav-item active" id="tab-orders-link" data-toggle="pill" href="#tab-orders">
+              <i class="fas fa-box mr-3 text-primary"></i> My Orders
+            </a>
+            <a class="dashboard-nav-item" id="tab-profile-link" data-toggle="pill" href="#tab-profile">
+              <i class="fas fa-user mr-3 text-info"></i> Profile Details
+            </a>
+            <a class="dashboard-nav-item" id="tab-addresses-link" data-toggle="pill" href="#tab-addresses">
+              <i class="fas fa-map-marker-alt mr-3 text-danger"></i> Saved Addresses
+            </a>
+            <a class="dashboard-nav-item" href="wishlist.html">
+              <i class="fas fa-heart mr-3 text-warning"></i> My Wishlist
+            </a>
+            <a class="dashboard-nav-item text-danger" href="#" onclick="logoutUser()">
+              <i class="fas fa-sign-out-alt mr-3"></i> Logout
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Tab Contents -->
+      <div class="col-lg-9">
+        <div class="tab-content">
+          <!-- TAB 1: Orders -->
+          <div class="tab-pane fade show active" id="tab-orders">
+            <div class="card p-4 border-0 rounded-xl shadow-sm bg-white">
+              <h5 class="font-weight-800 text-dark mb-3"><i class="fas fa-box-open mr-2 text-primary"></i> Order History</h5>
+              <div id="orders-list-container">
+                <!-- Dynamically rendered -->
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: Profile -->
+          <div class="tab-pane fade" id="tab-profile">
+            <div class="card p-4 border-0 rounded-xl shadow-sm bg-white">
+              <h5 class="font-weight-800 text-dark mb-4"><i class="fas fa-user-edit mr-2 text-primary"></i> Personal Information</h5>
+              <form onsubmit="handleProfileUpdate(event)">
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label class="font-weight-600 small">Full Name</label>
+                    <input type="text" id="prof-name" class="form-control" required>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="font-weight-600 small">Email Address</label>
+                    <input type="email" id="prof-email" class="form-control" readonly>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="font-weight-600 small">Phone Number</label>
+                    <input type="tel" id="prof-phone" class="form-control" placeholder="+91 98765 43210">
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="font-weight-600 small">Member Since</label>
+                    <input type="text" id="prof-joined" class="form-control" readonly>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary font-weight-bold px-4 py-2 rounded-pill mt-2">
+                  Save Changes
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- TAB 3: Addresses -->
+          <div class="tab-pane fade" id="tab-addresses">
+            <div class="card p-4 border-0 rounded-xl shadow-sm bg-white">
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="font-weight-800 text-dark mb-0"><i class="fas fa-map-marked-alt mr-2 text-primary"></i> Delivery Addresses</h5>
+                <button class="btn btn-outline-primary btn-sm rounded-pill font-weight-bold" onclick="alert('Add address dialog')">+ Add New</button>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <div class="card p-3 border-primary rounded-xl h-100 bg-light">
+                    <div class="d-flex justify-content-between">
+                      <span class="badge badge-primary font-weight-bold">Default Home</span>
+                      <small class="text-muted"><i class="fas fa-check-circle text-primary"></i> Active</small>
+                    </div>
+                    <h6 class="font-weight-bold text-dark mt-2 mb-1" id="addr-name-tag">Shabna M</h6>
+                    <p class="small text-muted mb-2">Flat 402, Skyline Heights, Marine Drive<br>Ernakulam, Kerala - 682031</p>
+                    <p class="small text-muted mb-0"><i class="fas fa-phone mr-1"></i> +91 98765 43210</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container text-center">
+      <p class="mb-0 text-muted small">&copy; 2026 StyleHub Fashion Retail. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="ecommerce.js"></script>
+
+  <script>
+    function loadDashboardData() {
+      let user = getCurrentUser();
+      if (!user) {
+        // default mock user
+        user = {
+          name: 'Shabna M',
+          email: 'shabna@stylehub.store',
+          phone: '+91 98765 43210',
+          joinedDate: 'Sep 2026',
+          addresses: [{ id: '1', line1: 'Flat 402, Skyline Towers', city: 'Ernakulam', state: 'Kerala', pin: '682001' }]
+        };
+        localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(user));
+      }
+
+      document.getElementById('dash-avatar').innerText = user.name.charAt(0).toUpperCase();
+      document.getElementById('dash-user-name').innerText = user.name;
+      document.getElementById('dash-user-email').innerText = user.email;
+
+      document.getElementById('prof-name').value = user.name;
+      document.getElementById('prof-email').value = user.email;
+      document.getElementById('prof-phone').value = user.phone || '+91 98765 43210';
+      document.getElementById('prof-joined').value = user.joinedDate || 'Sep 2026';
+      document.getElementById('addr-name-tag').innerText = user.name;
+
+      renderOrdersList();
+    }
+
+    function renderOrdersList() {
+      const orders = getOrders();
+      const container = document.getElementById('orders-list-container');
+
+      if (orders.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-5 text-muted">
+            <i class="fas fa-box-open display-4 mb-3"></i>
+            <p>You have not placed any orders yet.</p>
+            <a href="shop.html" class="btn btn-primary btn-sm font-weight-bold rounded-pill">Start Shopping</a>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = orders.map(order => `
+        <div class="card p-3 border rounded-xl mb-3 shadow-none">
+          <div class="d-flex justify-content-between align-items-center flex-wrap pb-2 border-bottom mb-3">
+            <div>
+              <span class="font-weight-bold text-dark">Order #${order.id}</span>
+              <span class="text-muted small ml-2">• Placed on ${order.date}</span>
+            </div>
+            <div>
+              <span class="badge ${order.status === 'Delivered' ? 'badge-success' : 'badge-warning'} font-weight-bold px-3 py-1 rounded-pill">
+                ${order.status}
+              </span>
+            </div>
+          </div>
+
+          <div class="row align-items-center">
+            <div class="col-md-7">
+              ${(order.items || []).map(item => `
+                <div class="d-flex align-items-center mb-2">
+                  <img src="${item.image}" alt="${item.name}" class="rounded mr-2" style="width: 45px; height: 45px; object-fit: cover;">
+                  <div class="small overflow-hidden">
+                    <strong class="text-dark d-block text-truncate">${item.name}</strong>
+                    <span class="text-muted">Qty: ${item.quantity} | ₹${item.price}</span>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+            <div class="col-md-5 text-md-right mt-3 mt-md-0 border-top pt-2 pt-md-0 border-md-top-0">
+              <span class="small text-muted d-block">Total Paid</span>
+              <h5 class="font-weight-800 text-primary mb-2">₹${order.total.toLocaleString('en-IN')}</h5>
+              <a href="order-tracking.html?orderId=${order.id}" class="btn btn-outline-primary btn-sm font-weight-bold rounded-pill">
+                <i class="fas fa-truck mr-1"></i> Track Order
+              </a>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function handleProfileUpdate(e) {
+      e.preventDefault();
+      let user = getCurrentUser() || {};
+      user.name = document.getElementById('prof-name').value.trim();
+      user.phone = document.getElementById('prof-phone').value.trim();
+      localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(user));
+      showToast('Profile updated successfully!', 'success');
+      loadDashboardData();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadDashboardData();
+
+      // Check hash for tab selection
+      if (window.location.hash === '#orders') {
+        $('#tab-orders-link').tab('show');
+      }
+    });
+  </script>
+</body>
+</html>

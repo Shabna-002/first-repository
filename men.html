@@ -6,345 +6,120 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Men's Collection | StyleHub</title>
 
-  <!-- Google Fonts & Font Awesome -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Bootstrap 4 CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  
-  <!-- Custom CSS -->
   <link rel="stylesheet" href="ecommerce.css">
 </head>
 <body>
 
-  <!-- Navigation Bar -->
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-      <div class="container">
+  <!-- Top Announcement Bar -->
+  <div class="top-announcement-bar">
+    <span>✨ MEN'S COLLECTION: UP TO 50% OFF ON CASUAL SHIRTS, TEES & BOMBER JACKETS! CODE: <span class="coupon-badge">STYLE20</span></span>
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light px-0">
         <a class="navbar-brand" href="index.html">
-          <i class="fas fa-shopping-bag"></i> Style<span>Hub</span>
+          <div class="brand-icon-box"><i class="fas fa-bag-shopping"></i></div>
+          Style<span>Hub</span>
         </a>
-        
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+
+        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#mainNavbarCollapse">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
-            </li>
+        <div class="collapse navbar-collapse" id="mainNavbarCollapse">
+          <ul class="navbar-nav mr-auto ml-lg-3">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="shop.html">All Products</a></li>
             <li class="nav-item dropdown active">
-              <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Category
-              </a>
-              <div class="dropdown-menu" aria-labelledby="categoryDropdown">
-                <a class="dropdown-item active text-primary" href="men.html"><i class="fas fa-male mr-2"></i> Men's Collection</a>
-                <a class="dropdown-item" href="women.html"><i class="fas fa-female mr-2"></i> Women's Collection</a>
-                <a class="dropdown-item" href="kids.html"><i class="fas fa-child mr-2"></i> Kids' Collection</a>
+              <a class="nav-link dropdown-toggle text-primary" href="#" id="menCatDrop" role="button" data-toggle="dropdown">Categories</a>
+              <div class="dropdown-menu border-0 shadow-lg">
+                <a class="dropdown-item py-2 active font-weight-bold" href="men.html"><i class="fas fa-male mr-2 text-primary"></i> Men's Collection</a>
+                <a class="dropdown-item py-2" href="women.html"><i class="fas fa-female mr-2 text-danger"></i> Women's Collection</a>
+                <a class="dropdown-item py-2" href="kids.html"><i class="fas fa-child mr-2 text-success"></i> Kids' Collection</a>
               </div>
             </li>
+            <li class="nav-item"><a class="nav-link" href="order-tracking.html">Track Order</a></li>
           </ul>
 
-          <ul class="navbar-nav ml-auto align-items-center" id="nav-auth-links">
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-toggle="modal" data-target="#signInModal">
-                <i class="fas fa-sign-in-alt mr-1"></i> Sign In
+          <div class="search-container-box mx-lg-3 my-2 my-lg-0">
+            <div class="search-input-wrapper">
+              <i class="fas fa-search search-icon"></i>
+              <input type="text" class="global-search-input" placeholder="Search in Men's..." autocomplete="off">
+            </div>
+            <div id="search-dropdown-results"></div>
+          </div>
+
+          <ul class="navbar-nav align-items-center ml-lg-auto">
+            <li class="nav-item mr-2">
+              <a class="nav-action-icon-btn" href="wishlist.html" title="Wishlist">
+                <i class="far fa-heart"></i>
+                <span class="badge-counter-pill wishlist-badge-count" style="display: none;">0</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-toggle="modal" data-target="#signUpModal">
-                <i class="fas fa-user-plus mr-1"></i> Sign Up
+            <li class="nav-item mr-3">
+              <a class="nav-action-icon-btn" href="cart.html" title="Shopping Cart">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="badge-counter-pill cart-badge-count" style="display: none;">0</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link btn btn-outline-info text-white ml-lg-2 px-3 py-1" href="cart.html">
-                <i class="fas fa-shopping-cart mr-1"></i> Cart
-                <span class="cart-badge cart-badge-count">0</span>
-              </a>
-            </li>
+            <div id="nav-user-actions" class="d-flex align-items-center"></div>
           </ul>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </div>
   </header>
 
-  <main class="container mt-4">
-    <!-- Category Hero Banner -->
-    <div class="category-banner">
-      <img src="images/men_banner.jpg" class="img-fluid w-100" alt="Men's Collection">
+  <main class="container my-4">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb bg-transparent p-0 mb-3 small">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item"><a href="shop.html">Shop</a></li>
+        <li class="breadcrumb-item active text-dark font-weight-bold">Men's Fashion</li>
+      </ol>
+    </nav>
+
+    <!-- Category Banner -->
+    <div class="category-banner mb-4">
+      <div class="position-relative rounded-2xl overflow-hidden shadow-lg" style="height: 280px;">
+        <img src="images/men_banner.jpg" class="w-100 h-100" style="object-fit: cover;" alt="Men's Collection">
+        <div class="hero-caption-overlay">
+          <div>
+            <span class="badge badge-primary font-weight-bold px-3 py-1 rounded-pill mb-2">MEN'S PREMIUM COLLECTION</span>
+            <h2 class="font-weight-800 display-5 mb-1">Modern Everyday Essentials</h2>
+            <p class="text-light lead small mb-0">From bio-washed cotton crewnecks to bespoke stretch denim and flight bomber jackets.</p>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- Section Heading -->
-    <h2 class="section-title">Men's Collection</h2>
-
-    <!-- Product Grid -->
-    <div class="row">
-      <!-- Product 1 -->
-      <div class="col-xl-4 col-md-6 col-12 mb-4">
-        <div class="product-card" data-id="m1" data-name="Men Casual Crewneck T-Shirt" data-price="799" data-category="Men's T-Shirts" data-image="images/men1.jpg">
-          <div class="product-img-wrap">
-            <span class="discount-badge">45% OFF</span>
-            <img src="images/men1.jpg" alt="Men T-Shirt">
-          </div>
-          <div class="card-body">
-            <div class="product-category">T-Shirts</div>
-            <h5 class="product-title">Men Casual Crewneck T-Shirt</h5>
-            <div class="product-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-              <span class="rating-count">(4.5)</span>
-            </div>
-            <div class="price-wrap">
-              <span class="price-current">₹799</span>
-              <span class="price-original">₹1,499</span>
-            </div>
-            <button class="btn-add-cart">
-              <i class="fas fa-cart-plus"></i> Add to Cart
-            </button>
-          </div>
-        </div>
+    <!-- Products Grid Header -->
+    <div class="section-header-row mb-4">
+      <div>
+        <h3 class="section-main-heading">Men's Catalog (<span id="men-product-count">0</span>)</h3>
+        <p class="section-subheading">Refined silhouettes and quality tailored apparel</p>
       </div>
-
-      <!-- Product 2 -->
-      <div class="col-xl-4 col-md-6 col-12 mb-4">
-        <div class="product-card" data-id="m2" data-name="Men Slim Fit Denim Jeans" data-price="1499" data-category="Men's Jeans" data-image="images/men2.jpg">
-          <div class="product-img-wrap">
-            <span class="discount-badge">50% OFF</span>
-            <img src="images/men2.jpg" alt="Men Slim Fit Jeans">
-          </div>
-          <div class="card-body">
-            <div class="product-category">Jeans</div>
-            <h5 class="product-title">Men Slim Fit Denim Jeans</h5>
-            <div class="product-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-              <span class="rating-count">(4.2)</span>
-            </div>
-            <div class="price-wrap">
-              <span class="price-current">₹1,499</span>
-              <span class="price-original">₹2,999</span>
-            </div>
-            <button class="btn-add-cart">
-              <i class="fas fa-cart-plus"></i> Add to Cart
-            </button>
-          </div>
-        </div>
+      <div>
+        <a href="shop.html?category=Men" class="btn btn-outline-primary btn-sm rounded-pill font-weight-bold px-3">
+          <i class="fas fa-sliders-h mr-1"></i> Filter & Sort
+        </a>
       </div>
+    </div>
 
-      <!-- Product 3 -->
-      <div class="col-xl-4 col-md-6 col-12 mb-4">
-        <div class="product-card" data-id="m3" data-name="Men Formal Slim Fit Trousers" data-price="1199" data-category="Men's Trousers" data-image="images/men3.jpg">
-          <div class="product-img-wrap">
-            <span class="discount-badge">40% OFF</span>
-            <img src="images/men3.jpg" alt="Men Trousers">
-          </div>
-          <div class="card-body">
-            <div class="product-category">Trousers</div>
-            <h5 class="product-title">Men Formal Slim Fit Trousers</h5>
-            <div class="product-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              <span class="rating-count">(4.7)</span>
-            </div>
-            <div class="price-wrap">
-              <span class="price-current">₹1,199</span>
-              <span class="price-original">₹1,999</span>
-            </div>
-            <button class="btn-add-cart">
-              <i class="fas fa-cart-plus"></i> Add to Cart
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Product 4 -->
-      <div class="col-xl-4 col-md-6 col-12 mb-4">
-        <div class="product-card" data-id="m4" data-name="Men Premium Cotton Casual Shirt" data-price="1299" data-category="Men's Shirts" data-image="images/men4.jpg">
-          <div class="product-img-wrap">
-            <span class="discount-badge">35% OFF</span>
-            <img src="images/men4.jpg" alt="Men Shirts">
-          </div>
-          <div class="card-body">
-            <div class="product-category">Shirts</div>
-            <h5 class="product-title">Men Premium Cotton Casual Shirt</h5>
-            <div class="product-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-              <span class="rating-count">(4.6)</span>
-            </div>
-            <div class="price-wrap">
-              <span class="price-current">₹1,299</span>
-              <span class="price-original">₹1,999</span>
-            </div>
-            <button class="btn-add-cart">
-              <i class="fas fa-cart-plus"></i> Add to Cart
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Product 5 -->
-      <div class="col-xl-4 col-md-6 col-12 mb-4">
-        <div class="product-card" data-id="m5" data-name="Men Knitwear Pullover Sweater" data-price="1799" data-category="Men's Winterwear" data-image="images/men5.jpg">
-          <div class="product-img-wrap">
-            <span class="discount-badge">40% OFF</span>
-            <img src="images/men5.jpg" alt="Men Winterwear">
-          </div>
-          <div class="card-body">
-            <div class="product-category">Winterwear</div>
-            <h5 class="product-title">Men Knitwear Pullover Sweater</h5>
-            <div class="product-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              <span class="rating-count">(4.8)</span>
-            </div>
-            <div class="price-wrap">
-              <span class="price-current">₹1,799</span>
-              <span class="price-original">₹2,999</span>
-            </div>
-            <button class="btn-add-cart">
-              <i class="fas fa-cart-plus"></i> Add to Cart
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Product 6 -->
-      <div class="col-xl-4 col-md-6 col-12 mb-4">
-        <div class="product-card" data-id="m6" data-name="Men Classic Bomber Jacket" data-price="2199" data-category="Men's Jackets" data-image="images/men6.jpg">
-          <div class="product-img-wrap">
-            <span class="discount-badge">50% OFF</span>
-            <img src="images/men6.jpg" alt="Men Jacket">
-          </div>
-          <div class="card-body">
-            <div class="product-category">Jackets</div>
-            <h5 class="product-title">Men Classic Bomber Jacket</h5>
-            <div class="product-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-              <span class="rating-count">(4.5)</span>
-            </div>
-            <div class="price-wrap">
-              <span class="price-current">₹2,199</span>
-              <span class="price-original">₹4,399</span>
-            </div>
-            <button class="btn-add-cart">
-              <i class="fas fa-cart-plus"></i> Add to Cart
-            </button>
-          </div>
-        </div>
-      </div>
+    <!-- Men Products Grid -->
+    <div class="row" id="men-products-grid">
+      <!-- Dynamically populated -->
     </div>
   </main>
 
-  <!-- Sign In Modal -->
-  <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="signInModalLabel"><i class="fas fa-user-lock mr-2"></i>Sign In to StyleHub</h5>
-          <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form onsubmit="handleSignIn(event)">
-            <div class="form-group">
-              <label for="signInEmail" class="font-weight-500">Email Address</label>
-              <input type="email" class="form-control" id="signInEmail" placeholder="Enter your email" required>
-            </div>
-            <div class="form-group">
-              <label for="signInPassword" class="font-weight-500">Password</label>
-              <input type="password" class="form-control" id="signInPassword" placeholder="Enter password" required>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block font-weight-bold py-2 mt-4">
-              Sign In
-            </button>
-          </form>
-        </div>
-        <div class="modal-footer justify-content-center">
-          <p class="mb-0 text-muted small">Don't have an account? <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#signUpModal">Sign Up</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Sign Up Modal -->
-  <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="signUpModalLabel"><i class="fas fa-user-plus mr-2"></i>Create StyleHub Account</h5>
-          <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form onsubmit="handleSignUp(event)">
-            <div class="form-group">
-              <label for="signUpName" class="font-weight-500">Full Name</label>
-              <input type="text" class="form-control" id="signUpName" placeholder="Enter your full name" required>
-            </div>
-            <div class="form-group">
-              <label for="signUpEmail" class="font-weight-500">Email Address</label>
-              <input type="email" class="form-control" id="signUpEmail" placeholder="Enter your email" required>
-            </div>
-            <div class="form-group">
-              <label for="signUpPassword" class="font-weight-500">Password</label>
-              <input type="password" class="form-control" id="signUpPassword" placeholder="Create password" required>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block font-weight-bold py-2 mt-4">
-              Create Account
-            </button>
-          </form>
-        </div>
-        <div class="modal-footer justify-content-center">
-          <p class="mb-0 text-muted small">Already have an account? <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#signInModal">Sign In</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3 col-md-6 footer-col">
-          <h4>ONLINE SHOPPING</h4>
-          <ul>
-            <li><a href="men.html">Men's Collection</a></li>
-            <li><a href="women.html">Women's Collection</a></li>
-            <li><a href="kids.html">Kids' Collection</a></li>
-            <li><a href="cart.html">My Cart</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-3 col-md-6 footer-col">
-          <h4>CUSTOMER POLICIES</h4>
-          <ul>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Terms & Conditions</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-3 col-md-6 footer-col">
-          <h4>MY ACCOUNT</h4>
-          <ul>
-            <li><a href="#" data-toggle="modal" data-target="#signInModal">Sign In</a></li>
-            <li><a href="#" data-toggle="modal" data-target="#signUpModal">Register</a></li>
-            <li><a href="cart.html">View Bag</a></li>
-            <li><a href="#">Track Order</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-3 col-md-6 footer-col">
-          <h4>GET HELP</h4>
-          <ul>
-            <li><a href="#">Shipping Info</a></li>
-            <li><a href="#">Return Policy</a></li>
-            <li><a href="#">Payment Options</a></li>
-            <li><a href="#">Order Cancellation</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p class="mb-0">&copy; 2026 StyleHub E-Commerce. All Rights Reserved.</p>
-      </div>
+  <footer class="main-footer">
+    <div class="container text-center">
+      <p class="mb-0 text-muted small">&copy; 2026 StyleHub Fashion Retail. All Rights Reserved.</p>
     </div>
   </footer>
 
@@ -353,5 +128,15 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="ecommerce.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const all = getProducts();
+      const menProds = all.filter(p => p.category === 'Men');
+      document.getElementById('men-product-count').innerText = menProds.length;
+      document.getElementById('men-products-grid').innerHTML = menProds.map(p => renderProductCard(p)).join('');
+      updateWishlistBadges();
+    });
+  </script>
 </body>
 </html>

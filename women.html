@@ -6,345 +6,120 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Women's Collection | StyleHub</title>
 
-  <!-- Google Fonts & Font Awesome -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Bootstrap 4 CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  
-  <!-- Custom CSS -->
   <link rel="stylesheet" href="ecommerce.css">
 </head>
 <body>
 
-  <!-- Navigation Bar -->
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-      <div class="container">
+  <!-- Top Announcement Bar -->
+  <div class="top-announcement-bar">
+    <span>✨ WOMEN'S FESTIVE SPECIAL: UP TO 50% OFF ON LEHENGAS, SUIT SETS & HANDBAGS! USE CODE: <span class="coupon-badge">STYLE20</span></span>
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light px-0">
         <a class="navbar-brand" href="index.html">
-          <i class="fas fa-shopping-bag"></i> Style<span>Hub</span>
+          <div class="brand-icon-box"><i class="fas fa-bag-shopping"></i></div>
+          Style<span>Hub</span>
         </a>
-        
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+
+        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#mainNavbarCollapse">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
-            </li>
+        <div class="collapse navbar-collapse" id="mainNavbarCollapse">
+          <ul class="navbar-nav mr-auto ml-lg-3">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="shop.html">All Products</a></li>
             <li class="nav-item dropdown active">
-              <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Category
-              </a>
-              <div class="dropdown-menu" aria-labelledby="categoryDropdown">
-                <a class="dropdown-item" href="men.html"><i class="fas fa-male mr-2"></i> Men's Collection</a>
-                <a class="dropdown-item active text-primary" href="women.html"><i class="fas fa-female mr-2"></i> Women's Collection</a>
-                <a class="dropdown-item" href="kids.html"><i class="fas fa-child mr-2"></i> Kids' Collection</a>
+              <a class="nav-link dropdown-toggle text-primary" href="#" id="womenCatDrop" role="button" data-toggle="dropdown">Categories</a>
+              <div class="dropdown-menu border-0 shadow-lg">
+                <a class="dropdown-item py-2" href="men.html"><i class="fas fa-male mr-2 text-primary"></i> Men's Collection</a>
+                <a class="dropdown-item py-2 active font-weight-bold" href="women.html"><i class="fas fa-female mr-2 text-danger"></i> Women's Collection</a>
+                <a class="dropdown-item py-2" href="kids.html"><i class="fas fa-child mr-2 text-success"></i> Kids' Collection</a>
               </div>
             </li>
+            <li class="nav-item"><a class="nav-link" href="order-tracking.html">Track Order</a></li>
           </ul>
 
-          <ul class="navbar-nav ml-auto align-items-center" id="nav-auth-links">
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-toggle="modal" data-target="#signInModal">
-                <i class="fas fa-sign-in-alt mr-1"></i> Sign In
+          <div class="search-container-box mx-lg-3 my-2 my-lg-0">
+            <div class="search-input-wrapper">
+              <i class="fas fa-search search-icon"></i>
+              <input type="text" class="global-search-input" placeholder="Search in Women's..." autocomplete="off">
+            </div>
+            <div id="search-dropdown-results"></div>
+          </div>
+
+          <ul class="navbar-nav align-items-center ml-lg-auto">
+            <li class="nav-item mr-2">
+              <a class="nav-action-icon-btn" href="wishlist.html" title="Wishlist">
+                <i class="far fa-heart"></i>
+                <span class="badge-counter-pill wishlist-badge-count" style="display: none;">0</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-toggle="modal" data-target="#signUpModal">
-                <i class="fas fa-user-plus mr-1"></i> Sign Up
+            <li class="nav-item mr-3">
+              <a class="nav-action-icon-btn" href="cart.html" title="Shopping Cart">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="badge-counter-pill cart-badge-count" style="display: none;">0</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link btn btn-outline-info text-white ml-lg-2 px-3 py-1" href="cart.html">
-                <i class="fas fa-shopping-cart mr-1"></i> Cart
-                <span class="cart-badge cart-badge-count">0</span>
-              </a>
-            </li>
+            <div id="nav-user-actions" class="d-flex align-items-center"></div>
           </ul>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </div>
   </header>
 
-  <main class="container mt-4">
-    <!-- Category Hero Banner -->
-    <div class="category-banner">
-      <img src="images/women_banner.jpg" class="img-fluid w-100" alt="Women's Collection">
+  <main class="container my-4">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb bg-transparent p-0 mb-3 small">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item"><a href="shop.html">Shop</a></li>
+        <li class="breadcrumb-item active text-dark font-weight-bold">Women's Fashion</li>
+      </ol>
+    </nav>
+
+    <!-- Category Banner -->
+    <div class="category-banner mb-4">
+      <div class="position-relative rounded-2xl overflow-hidden shadow-lg" style="height: 280px;">
+        <img src="images/women_banner.jpg" class="w-100 h-100" style="object-fit: cover;" alt="Women's Collection">
+        <div class="hero-caption-overlay">
+          <div>
+            <span class="badge badge-danger font-weight-bold px-3 py-1 rounded-pill mb-2">WOMEN'S HAUTE COUTURE</span>
+            <h2 class="font-weight-800 display-5 mb-1">Elegance & Modern Grace</h2>
+            <p class="text-light lead small mb-0">Discover handcrafted silk suit sets, pure Chanderi kurtas, structured handbags, and bridal lehengas.</p>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- Section Heading -->
-    <h2 class="section-title">Women's Collection</h2>
-
-    <!-- Product Grid -->
-    <div class="row">
-      <!-- Product 1 -->
-      <div class="col-xl-4 col-md-6 col-12 mb-4">
-        <div class="product-card" data-id="w1" data-name="Women Embroidered Straight Kurta" data-price="999" data-category="Ethnic Wear" data-image="images/women1.jpg">
-          <div class="product-img-wrap">
-            <span class="discount-badge">47% OFF</span>
-            <img src="images/women1.jpg" alt="Embroidered Kurta">
-          </div>
-          <div class="card-body">
-            <div class="product-category">Kurtas & Sets</div>
-            <h5 class="product-title">Women Embroidered Straight Kurta</h5>
-            <div class="product-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-              <span class="rating-count">(4.6)</span>
-            </div>
-            <div class="price-wrap">
-              <span class="price-current">₹999</span>
-              <span class="price-original">₹1,899</span>
-            </div>
-            <button class="btn-add-cart">
-              <i class="fas fa-cart-plus"></i> Add to Cart
-            </button>
-          </div>
-        </div>
+    <!-- Products Grid Header -->
+    <div class="section-header-row mb-4">
+      <div>
+        <h3 class="section-main-heading">Women's Catalog (<span id="women-product-count">0</span>)</h3>
+        <p class="section-subheading">Contemporary styles and ethnic heritage essentials</p>
       </div>
-
-      <!-- Product 2 -->
-      <div class="col-xl-4 col-md-6 col-12 mb-4">
-        <div class="product-card" data-id="w2" data-name="Festive Silk Blend Suit Set" data-price="2499" data-category="Ethnic Wear" data-image="images/women2.jpg">
-          <div class="product-img-wrap">
-            <span class="discount-badge">38% OFF</span>
-            <img src="images/women2.jpg" alt="Festive Suit Set">
-          </div>
-          <div class="card-body">
-            <div class="product-category">Suit Sets</div>
-            <h5 class="product-title">Festive Silk Blend Suit Set</h5>
-            <div class="product-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              <span class="rating-count">(4.9)</span>
-            </div>
-            <div class="price-wrap">
-              <span class="price-current">₹2,499</span>
-              <span class="price-original">₹3,999</span>
-            </div>
-            <button class="btn-add-cart">
-              <i class="fas fa-cart-plus"></i> Add to Cart
-            </button>
-          </div>
-        </div>
+      <div>
+        <a href="shop.html?category=Women" class="btn btn-outline-primary btn-sm rounded-pill font-weight-bold px-3">
+          <i class="fas fa-sliders-h mr-1"></i> Filter & Sort
+        </a>
       </div>
+    </div>
 
-      <!-- Product 3 -->
-      <div class="col-xl-4 col-md-6 col-12 mb-4">
-        <div class="product-card" data-id="w3" data-name="Structured Leather Handbag" data-price="1899" data-category="Handbags" data-image="images/women3.jpg">
-          <div class="product-img-wrap">
-            <span class="discount-badge">37% OFF</span>
-            <img src="images/women3.jpg" alt="Leather Handbag">
-          </div>
-          <div class="card-body">
-            <div class="product-category">Handbags</div>
-            <h5 class="product-title">Structured Leather Handbag</h5>
-            <div class="product-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-              <span class="rating-count">(4.7)</span>
-            </div>
-            <div class="price-wrap">
-              <span class="price-current">₹1,899</span>
-              <span class="price-original">₹2,999</span>
-            </div>
-            <button class="btn-add-cart">
-              <i class="fas fa-cart-plus"></i> Add to Cart
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Product 4 -->
-      <div class="col-xl-4 col-md-6 col-12 mb-4">
-        <div class="product-card" data-id="w4" data-name="Pointed Toe Casual Ballet Flats" data-price="899" data-category="Footwear" data-image="images/women4.jpg">
-          <div class="product-img-wrap">
-            <span class="discount-badge">44% OFF</span>
-            <img src="images/women4.jpg" alt="Ballet Flats">
-          </div>
-          <div class="card-body">
-            <div class="product-category">Footwear</div>
-            <h5 class="product-title">Pointed Toe Casual Ballet Flats</h5>
-            <div class="product-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-              <span class="rating-count">(4.3)</span>
-            </div>
-            <div class="price-wrap">
-              <span class="price-current">₹899</span>
-              <span class="price-original">₹1,599</span>
-            </div>
-            <button class="btn-add-cart">
-              <i class="fas fa-cart-plus"></i> Add to Cart
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Product 5 -->
-      <div class="col-xl-4 col-md-6 col-12 mb-4">
-        <div class="product-card" data-id="w5" data-name="Women Sport Training T-Shirt" data-price="699" data-category="Western Wear" data-image="images/women5.jpg">
-          <div class="product-img-wrap">
-            <span class="discount-badge">46% OFF</span>
-            <img src="images/women5.jpg" alt="Training T-Shirt">
-          </div>
-          <div class="card-body">
-            <div class="product-category">Western Wear</div>
-            <h5 class="product-title">Women Sport Training T-Shirt</h5>
-            <div class="product-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              <span class="rating-count">(4.5)</span>
-            </div>
-            <div class="price-wrap">
-              <span class="price-current">₹699</span>
-              <span class="price-original">₹1,299</span>
-            </div>
-            <button class="btn-add-cart">
-              <i class="fas fa-cart-plus"></i> Add to Cart
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Product 6 -->
-      <div class="col-xl-4 col-md-6 col-12 mb-4">
-        <div class="product-card" data-id="w6" data-name="Royal Bridal Semi-Stitched Lehenga" data-price="3999" data-category="Ethnic Wear" data-image="images/women6.jpg">
-          <div class="product-img-wrap">
-            <span class="discount-badge">43% OFF</span>
-            <img src="images/women6.jpg" alt="Bridal Lehenga">
-          </div>
-          <div class="card-body">
-            <div class="product-category">Lehengas</div>
-            <h5 class="product-title">Royal Bridal Semi-Stitched Lehenga</h5>
-            <div class="product-rating">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-              <span class="rating-count">(4.8)</span>
-            </div>
-            <div class="price-wrap">
-              <span class="price-current">₹3,999</span>
-              <span class="price-original">₹6,999</span>
-            </div>
-            <button class="btn-add-cart">
-              <i class="fas fa-cart-plus"></i> Add to Cart
-            </button>
-          </div>
-        </div>
-      </div>
+    <!-- Women Products Grid -->
+    <div class="row" id="women-products-grid">
+      <!-- Dynamically populated -->
     </div>
   </main>
 
-  <!-- Sign In Modal -->
-  <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="signInModalLabel"><i class="fas fa-user-lock mr-2"></i>Sign In to StyleHub</h5>
-          <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form onsubmit="handleSignIn(event)">
-            <div class="form-group">
-              <label for="signInEmail" class="font-weight-500">Email Address</label>
-              <input type="email" class="form-control" id="signInEmail" placeholder="Enter your email" required>
-            </div>
-            <div class="form-group">
-              <label for="signInPassword" class="font-weight-500">Password</label>
-              <input type="password" class="form-control" id="signInPassword" placeholder="Enter password" required>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block font-weight-bold py-2 mt-4">
-              Sign In
-            </button>
-          </form>
-        </div>
-        <div class="modal-footer justify-content-center">
-          <p class="mb-0 text-muted small">Don't have an account? <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#signUpModal">Sign Up</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Sign Up Modal -->
-  <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="signUpModalLabel"><i class="fas fa-user-plus mr-2"></i>Create StyleHub Account</h5>
-          <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form onsubmit="handleSignUp(event)">
-            <div class="form-group">
-              <label for="signUpName" class="font-weight-500">Full Name</label>
-              <input type="text" class="form-control" id="signUpName" placeholder="Enter your full name" required>
-            </div>
-            <div class="form-group">
-              <label for="signUpEmail" class="font-weight-500">Email Address</label>
-              <input type="email" class="form-control" id="signUpEmail" placeholder="Enter your email" required>
-            </div>
-            <div class="form-group">
-              <label for="signUpPassword" class="font-weight-500">Password</label>
-              <input type="password" class="form-control" id="signUpPassword" placeholder="Create password" required>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block font-weight-bold py-2 mt-4">
-              Create Account
-            </button>
-          </form>
-        </div>
-        <div class="modal-footer justify-content-center">
-          <p class="mb-0 text-muted small">Already have an account? <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#signInModal">Sign In</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3 col-md-6 footer-col">
-          <h4>ONLINE SHOPPING</h4>
-          <ul>
-            <li><a href="men.html">Men's Collection</a></li>
-            <li><a href="women.html">Women's Collection</a></li>
-            <li><a href="kids.html">Kids' Collection</a></li>
-            <li><a href="cart.html">My Cart</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-3 col-md-6 footer-col">
-          <h4>CUSTOMER POLICIES</h4>
-          <ul>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Terms & Conditions</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-3 col-md-6 footer-col">
-          <h4>MY ACCOUNT</h4>
-          <ul>
-            <li><a href="#" data-toggle="modal" data-target="#signInModal">Sign In</a></li>
-            <li><a href="#" data-toggle="modal" data-target="#signUpModal">Register</a></li>
-            <li><a href="cart.html">View Bag</a></li>
-            <li><a href="#">Track Order</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-3 col-md-6 footer-col">
-          <h4>GET HELP</h4>
-          <ul>
-            <li><a href="#">Shipping Info</a></li>
-            <li><a href="#">Return Policy</a></li>
-            <li><a href="#">Payment Options</a></li>
-            <li><a href="#">Order Cancellation</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p class="mb-0">&copy; 2026 StyleHub E-Commerce. All Rights Reserved.</p>
-      </div>
+  <footer class="main-footer">
+    <div class="container text-center">
+      <p class="mb-0 text-muted small">&copy; 2026 StyleHub Fashion Retail. All Rights Reserved.</p>
     </div>
   </footer>
 
@@ -353,5 +128,15 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="ecommerce.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const all = getProducts();
+      const womenProds = all.filter(p => p.category === 'Women');
+      document.getElementById('women-product-count').innerText = womenProds.length;
+      document.getElementById('women-products-grid').innerHTML = womenProds.map(p => renderProductCard(p)).join('');
+      updateWishlistBadges();
+    });
+  </script>
 </body>
 </html>
